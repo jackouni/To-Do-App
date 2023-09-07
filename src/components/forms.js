@@ -1,3 +1,6 @@
+import button from "./buttons";
+
+// Creates a <fieldset>
 function fieldset(title, inputType, inputName, value, idName) {
 	const inputField = document.createElement("fieldset");
 	const label = document.createElement("label");
@@ -16,13 +19,32 @@ function fieldset(title, inputType, inputName, value, idName) {
 	return inputField;
 }
 
-function form() {
+// Submit button for form
+let submitBtn = button(
+	"Add",
+	"submit-btn",
+	() => console.log("submit btn pressed"),
+	"submit"
+);
+
+// Fieldset Components that will be appended to form.
+// In order of appendage.
+let fieldsets = [
+	fieldset("Yo mama", "text", "name", "asdf", "ididid"),
+	fieldset("DO this", "text", "IDK", "HAHAH", "yol"),
+];
+
+// Loads the entire form to be rendered.
+function loadForm() {
 	let form = document.createElement("form");
 
-	form.append(fieldset("Yo mama", "text", "name", "asdf", "ididid"));
-	form.append(fieldset("DO this", "text", "IDK", "HAHAH", "yol"));
+	for (let i = 0; i < fieldsets.length; i++) {
+		form.append(fieldsets[i]);
+	}
+
+	form.append(submitBtn);
 
 	return form;
 }
 
-export default form;
+export default loadForm;
