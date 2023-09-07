@@ -1,16 +1,12 @@
-function button(content, idName, eventHandler) {
+function button(content, idName, eventHandler, type) {
 	let btn = document.createElement("button");
 
-	idName = null ? "no id" : (btn.id = idName);
-
+	btn.id = idName;
 	btn.classList.add("btns");
-	if (typeof content === "string") {
-		btn.innerText = content;
-	}
-
+	btn.type = type;
+	btn.innerText = content;
 	btn.addEventListener("click", eventHandler);
 
-	console.log("button made...");
 	return btn;
 }
 
