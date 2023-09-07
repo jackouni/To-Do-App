@@ -6,4 +6,9 @@ import header from "./components/header";
 import main from "./components/main";
 import form from "./components/forms";
 
-content.append(form());
+function initialize() {
+	content.append(header());
+	content.append(form());
+}
+
+initialize();
