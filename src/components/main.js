@@ -1,13 +1,4 @@
-function main() {
-	let main = document.createElement("main");
-
-	main.append(nav("Navigate"));
-	main.append(section("To Do's"));
-
-	console.log("<main> created");
-	return main;
-}
-
+// Creates a <nav> // Navigation for ToDo's & Projects.
 function nav(titleName) {
 	let nav = document.createElement("nav");
 	let title = document.createElement("h2");
@@ -17,6 +8,7 @@ function nav(titleName) {
 	return nav;
 }
 
+// Creates a <section> // Section with Todo's list.
 function section(titleName) {
 	let section = document.createElement("section");
 
@@ -27,11 +19,19 @@ function section(titleName) {
 	return section;
 }
 
+// Components that will append to <main>
+// Will append in array order.
+let components = [nav("Navigation"), section("Today's Tasks")];
+
+// Loads the entire <main> // Contains a <nav> + <section>.
 function loadMain() {
 	let main = document.createElement("main");
 
-	main.append(nav("Navigation"));
-	main.append(section("Today's Tasks"));
+	// Components in 'components' array will append to main.
+	for (let i = 0; i < components.length; i++) {
+		main.append(components[i]);
+	}
+
 	return main;
 }
 

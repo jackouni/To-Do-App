@@ -27,8 +27,8 @@ let submitBtn = button(
 	"submit"
 );
 
-// Fieldset Components that will be appended to form.
-// In order of appendage.
+// Fieldset components that will append to <form>
+// Will append in array order.
 let fieldsets = [
 	fieldset("Yo mama", "text", "name", "asdf", "ididid"),
 	fieldset("DO this", "text", "IDK", "HAHAH", "yol"),
@@ -38,6 +38,7 @@ let fieldsets = [
 function loadForm() {
 	let form = document.createElement("form");
 
+	// Components in 'fieldsets' array will append to form.
 	for (let i = 0; i < fieldsets.length; i++) {
 		form.append(fieldsets[i]);
 	}

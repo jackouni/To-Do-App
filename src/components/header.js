@@ -1,7 +1,7 @@
 import buttons from "./buttons";
 
-// Components that will be appended to header.
-// In order of appendage.
+// Components that will append to <header>
+// Will append in array order.
 let components = [
 	buttons("Remove Task", "removeTask"),
 	buttons("Add Task", "addTask"),
@@ -12,6 +12,7 @@ function loadHeader() {
 	const header = document.createElement("header");
 	header.id = "header";
 
+	// Components in 'components' array will append to header.
 	for (let i = 0; i < components.length; i++) {
 		header.append(components[i]);
 	}
