@@ -4,9 +4,7 @@
 body {
 	width: 100vw;
 	height: 100vh;
-	border: solid black 4px;
 	box-sizing: border-box;
-
 	margin: 0px;
 }
 
@@ -16,7 +14,6 @@ body * {
 }
 
 #content {
-	background-color: rgb(237, 168, 77);
 	width: 100%;
 	height: 100%;
 }
@@ -24,5 +21,35 @@ body * {
 header {
 	width: 100%;
 	height: 10%;
-	border: solid white 4px;
+	background-color: red;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.232);
+}
+
+main {
+	display: flex;
+
+	width: 100%;
+	height: 90%;
+
+	h2 {
+		margin-top: 10px;
+		text-align: center;
+	}
+
+	nav {
+		display: flex;
+		flex-direction: column;
+
+		width: 20%;
+		height: 100%;
+		box-shadow: 0 10px 10px rgba(0, 0, 0, 0.232);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+
+		width: 80%;
+		height: 100%;
+	}
 }

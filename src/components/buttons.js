@@ -3,7 +3,7 @@ function button(content, idName, eventHandler) {
 
 	idName = null ? "no id" : (btn.id = idName);
 
-	btn.classList.add("buttons");
+	btn.classList.add("btns");
 	if (typeof content === "string") {
 		btn.innerText = content;
 	}
@@ -14,4 +14,4 @@ function button(content, idName, eventHandler) {
 	return btn;
 }
 
-export { button };
+export default button;
