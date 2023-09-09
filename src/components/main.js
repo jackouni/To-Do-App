@@ -14,6 +14,7 @@ function section(titleName) {
 
 	let title = document.createElement("h2");
 	title.innerText = titleName;
+	section.id = "tasks";
 	section.append(title);
 
 	return section;

@@ -1,6 +1,3 @@
-:root {
-}
-
 body {
 	width: 100vw;
 	height: 100vh;
@@ -51,5 +48,27 @@ main {
 
 		width: 80%;
 		height: 100%;
+
+		.todo {
+			display: flex;
+			border: solid black 4px;
+			padding: 5px;
+			margin: 5px;
+			gap: 10px;
+
+			.check-bubble {
+				border: solid black 2px;
+				border-radius: 50%;
+			}
+		}
 	}
+}
+
+form {
+	padding: 20px;
+	border: solid black 4px;
+	background-color: antiquewhite;
+	position: absolute;
+	top: 20%;
+	left: 20%;
 }

@@ -1,21 +1,16 @@
+let ToDos = [];
+
 const ToDo = (title, date, desc, priority) => {
 	const getTitle = () => title;
 	const getDate = () => date;
 	const getDescription = () => desc;
 	const getPriority = () => priority;
 
-	console.log("ToDo Created...");
-	return { getTitle, getDate, getDescription, getPriority };
-};
-
-const Project = (title, date, desc, priority) => {
-	const getTitle = () => title;
-	const getDate = () => date;
-	const getDescription = () => desc;
-	const getPriority = () => priority;
+	let newToDo = { getTitle, getDate, getDescription, getPriority };
+	ToDos.push(newToDo);
 
 	console.log("ToDo Created...");
-	return { getTitle, getDate, getDescription, getPriority };
+	return newToDo;
 };
 
-export { ToDo, Project };
+export { ToDo, ToDos };
