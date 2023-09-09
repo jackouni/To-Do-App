@@ -1,7 +1,9 @@
 import button from "./buttons";
+import { ToDos, ToDo } from "../todo-object";
+import { todos, toDoComponent } from "./todos";
 
 // Creates a <fieldset>
-function fieldset(title, inputType, inputName, value, idName) {
+function fieldset(title, inputType, inputName, value) {
 	const inputField = document.createElement("fieldset");
 	const label = document.createElement("label");
 	const input = document.createElement("input");
@@ -10,7 +12,7 @@ function fieldset(title, inputType, inputName, value, idName) {
 	input.type = inputType;
 	label.for = inputName;
 	input.name = inputName;
-	input.id = idName;
+	input.id = inputName;
 	input.value = value;
 
 	inputField.append(label);
@@ -19,20 +21,20 @@ function fieldset(title, inputType, inputName, value, idName) {
 	return inputField;
 }
 
-// Submit button for form
-let submitBtn = button(
-	"Add",
-	"submit-btn",
-	() => console.log("submit btn pressed"),
-	"submit"
-);
-
 // Fieldset components that will append to <form>
 // Will append in array order.
 let fieldsets = [
-	fieldset("Yo mama", "text", "name", "asdf", "ididid"),
-	fieldset("DO this", "text", "IDK", "HAHAH", "yol"),
+	fieldset("Title: ", "text", "title", "Sample Text"),
+	fieldset("Due Date: ", "text", "due", "dd/mm/yyyy"),
+	fieldset("Priority", "text", "priority", "! / !! / !!!"),
+	fieldset("Description: ", "text", "desc", "Do this thing, like this..."),
 ];
+
+// Submit button for form
+let submitBtn = button("Add", "submit-btn", "submit", (event) => {
+	event.preventDefault();
+	addTaskForm.style.display = "none";
+});
 
 // Loads the entire form to be rendered.
 function loadForm() {

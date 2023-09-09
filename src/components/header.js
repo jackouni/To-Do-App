@@ -1,10 +1,12 @@
 import buttons from "./buttons";
+import form from "./forms";
 
 // Components that will append to <header>
 // Will append in array order.
 let components = [
-	buttons("Remove Task", "removeTask"),
-	buttons("Add Task", "addTask"),
+	buttons("Add Task", "addTask", "click", () => {
+		content.append(form());
+	}),
 ];
 
 // Loads entire <header>
