@@ -23,4 +23,4 @@ function toDoComponent(name, date, desc, priority) {
 	return todo;
 }
 
-export { todos, toDoComponent };
+export { toDoComponent };
