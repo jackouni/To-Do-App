@@ -32,6 +32,7 @@ function textInput(idName, nameAttr, min, max) {
 // Creates <input type="radio">
 function radioInput(idName, nameAttr, checked) {
 	const newRadioInput = document.createElement("input");
+
 	newRadioInput.type = "radio";
 	newRadioInput.id = idName;
 	newRadioInput.name = nameAttr;
@@ -44,6 +45,7 @@ function radioInput(idName, nameAttr, checked) {
 // Title input fieldset
 function titleInputField() {
 	const titleFieldset = fieldset("title-fieldset");
+
 	titleFieldset.append(label("Title: ", "title"));
 	titleFieldset.append(textInput("title", "title"));
 
@@ -53,6 +55,7 @@ function titleInputField() {
 // Due Date input fieldset
 function dueDateInputField() {
 	const dueFieldset = fieldset("due-fieldset");
+
 	dueFieldset.append(label("due: ", "due"));
 	dueFieldset.append(textInput("due", "due"));
 
@@ -62,6 +65,7 @@ function dueDateInputField() {
 // Priority input fieldset
 function priorityInputField() {
 	const priorityFieldset = fieldset("priority-fieldset");
+
 	priorityFieldset.append(label("Priority Low: ", "priority"));
 	priorityFieldset.append(radioInput("priority-low", "priority", true));
 
