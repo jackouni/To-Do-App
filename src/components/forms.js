@@ -1,6 +1,5 @@
 import button from "./buttons";
-import { ToDos, ToDo } from "../todo-object";
-import { todos, toDoComponent } from "./todos";
+import addToDo from "../logic/add-todo";
 
 // Creates a <fieldset>
 function fieldset(title, inputType, inputName, value) {
@@ -31,14 +30,13 @@ let fieldsets = [
 ];
 
 // Submit button for form
-let submitBtn = button("Add", "submit-btn", "submit", (event) => {
-	event.preventDefault();
-	addTaskForm.style.display = "none";
-});
+// Reference: "src/components/buttons.js"
+let submitBtn = button("Add", "submit-btn");
 
 // Loads the entire form to be rendered.
 function loadForm() {
 	let form = document.createElement("form");
+	form.id = "addToDoForm";
 
 	// Components in 'fieldsets' array will append to form.
 	for (let i = 0; i < fieldsets.length; i++) {
@@ -46,6 +44,13 @@ function loadForm() {
 	}
 
 	form.append(submitBtn);
+
+	// Handles form submission
+	// Reference: "src/logic/add-todo.js"
+	form.addEventListener("submit", (event) => {
+		event.preventDefault();
+		addToDo();
+	});
 
 	return form;
 }
