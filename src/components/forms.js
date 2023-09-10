@@ -2,32 +2,77 @@ import button from "./buttons";
 import addToDo from "../logic/add-todo";
 
 // Creates a <fieldset>
-function fieldset(title, inputType, inputName, value) {
-	const inputField = document.createElement("fieldset");
-	const label = document.createElement("label");
-	const input = document.createElement("input");
+function fieldset(idName) {
+	const newFieldset = document.createElement("fieldset");
+	newFieldset.id = idName;
 
-	label.innerText = title;
-	input.type = inputType;
-	label.for = inputName;
-	input.name = inputName;
-	input.id = inputName;
-	input.value = value;
-
-	inputField.append(label);
-	inputField.append(input);
-
-	return inputField;
+	return newFieldset;
 }
 
-// Fieldset components that will append to <form>
-// Will append in array order.
-let fieldsets = [
-	fieldset("Title: ", "text", "title", "Sample Text"),
-	fieldset("Due Date: ", "text", "due", "dd/mm/yyyy"),
-	fieldset("Priority", "text", "priority", "! / !! / !!!"),
-	fieldset("Description: ", "text", "desc", "Do this thing, like this..."),
-];
+// Creates a <label>
+function label(title, forAttr) {
+	const newLabel = document.createElement("label");
+	newLabel.innerText = title;
+	newLabel.for = forAttr;
+
+	return newLabel;
+}
+
+// Creates <input type="text">
+function textInput(idName, nameAttr, min, max) {
+	const newTextInput = document.createElement("input");
+
+	newTextInput.type = "text";
+	newTextInput.id = idName;
+	newTextInput.name = nameAttr;
+
+	return newTextInput;
+}
+
+// Creates <input type="radio">
+function radioInput(idName, nameAttr, checked) {
+	const newRadioInput = document.createElement("input");
+	newRadioInput.type = "radio";
+	newRadioInput.id = idName;
+	newRadioInput.name = nameAttr;
+
+	if (checked) newRadioInput.checked = true;
+
+	return newRadioInput;
+}
+
+// Title input fieldset
+function titleInputField() {
+	const titleFieldset = fieldset("title-fieldset");
+	titleFieldset.append(label("Title: ", "title"));
+	titleFieldset.append(textInput("title", "title"));
+
+	return titleFieldset;
+}
+
+// Due Date input fieldset
+function dueDateInputField() {
+	const dueFieldset = fieldset("due-fieldset");
+	dueFieldset.append(label("due: ", "due"));
+	dueFieldset.append(textInput("due", "due"));
+
+	return dueFieldset;
+}
+
+// Priority input fieldset
+function priorityInputField() {
+	const priorityFieldset = fieldset("priority-fieldset");
+	priorityFieldset.append(label("Priority Low: ", "priority"));
+	priorityFieldset.append(radioInput("priority-low", "priority", true));
+
+	priorityFieldset.append(label("Priority Moderate: ", "priority"));
+	priorityFieldset.append(radioInput("priority-med", "priority", false));
+
+	priorityFieldset.append(label("Priority High: ", "priority"));
+	priorityFieldset.append(radioInput("priority-hi", "priority", false));
+
+	return priorityFieldset;
+}
 
 // Submit button for form
 // Reference: "src/components/buttons.js"
@@ -38,11 +83,9 @@ function loadForm() {
 	let form = document.createElement("form");
 	form.id = "addToDoForm";
 
-	// Components in 'fieldsets' array will append to form.
-	for (let i = 0; i < fieldsets.length; i++) {
-		form.append(fieldsets[i]);
-	}
-
+	form.append(titleInputField());
+	form.append(dueDateInputField());
+	form.append(priorityInputField());
 	form.append(submitBtn);
 
 	// Handles form submission
