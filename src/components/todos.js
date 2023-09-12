@@ -1,14 +1,19 @@
 import button from "./buttons";
 import removeToDo from "../logic/remove-todo";
 
-// Creates a 'todo' component to be displayed in the UI.
-function toDoComponent(name, date, desc, priority, index) {
-	let todo = document.createElement("div");
-	todo.id = `toDo-${index}`;
-	todo.classList.add("todo");
+// Stores todos we've created.
+let todos = [];
 
-	let checkBubble = button("", `check-bubble-${index}`, "click", removeToDo);
+// Creates a 'todo' component to be displayed in the UI.
+function todoComponent(name, date, desc, priority, index) {
+	let todo = document.createElement("div");
+	todo.classList.add("todo");
+	// This 'todo-index' id property will used to identify the todo element we want to remove from the UI.
+	todo.id = `todo-${index}`;
+
+	let checkBubble = button("", "", "click", removeToDo);
 	checkBubble.classList.add("check-bubble");
+	// This 'index' property will be used to identify which element's 'remove' button is being clicked.
 	checkBubble.index = index;
 
 	let title = document.createElement("h3");
@@ -37,7 +42,9 @@ function toDoComponent(name, date, desc, priority, index) {
 	todo.append(due);
 	todo.append(urgency);
 
+	todos.push(todo);
+
 	return todo;
 }
 
-export default toDoComponent;
+export { todoComponent, todos };

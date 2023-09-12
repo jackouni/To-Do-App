@@ -1,11 +1,23 @@
 let ToDos = [];
 
 const ToDo = (title, date, desc, priority, index) => {
-	const getTitle = () => title;
-	const getDate = () => date;
-	const getDescription = () => desc;
-	const getPriority = () => priority;
-	const getIndex = () => index;
+	let _title = title;
+	let _date = date;
+	let _desc = desc;
+	let _priority = priority;
+	let _index = index;
+
+	const getTitle = () => _title;
+	const getDate = () => _date;
+	const getDescription = () => _desc;
+	const getPriority = () => _priority;
+	const getIndex = () => _index;
+
+	const setIndex = (newIndex) => {
+		if (typeof newIndex === "number") {
+			_index = newIndex;
+		} else return;
+	};
 
 	let newToDo = {
 		getTitle,
@@ -13,6 +25,7 @@ const ToDo = (title, date, desc, priority, index) => {
 		getDescription,
 		getPriority,
 		getIndex,
+		setIndex,
 	};
 
 	ToDos.push(newToDo);

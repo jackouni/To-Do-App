@@ -1,7 +1,7 @@
 import { ToDo, ToDos } from "../objects/ToDo";
-import todo from "../components/todos";
+import { todoComponent, todos } from "../components/todos";
 
-function addToDo() {
+export default function addToDo() {
 	let form = document.getElementById("addToDoForm");
 
 	let toDoTitle = document.getElementById("title").value;
@@ -22,11 +22,11 @@ function addToDo() {
 		urgencyMarker = "!!!";
 	}
 
-	// Create 'todo' object that stores that "todo's" data.
+	// Create 'ToDo' object that stores that "todo's" data.
 	let newToDo = ToDo(toDoTitle, toDoDate, toDoDesc, toDoPriority, toDoIndex);
 
 	// Creates a 'todo' component to be displayed in the UI.
-	let newToDoComponent = todo(
+	let newToDoComponent = todoComponent(
 		toDoTitle,
 		toDoDate,
 		toDoDesc,
@@ -38,9 +38,9 @@ function addToDo() {
 	const taskSection = document.getElementById("tasks");
 	taskSection.append(newToDoComponent);
 
-	console.log(`ToDo index = ${newToDo.getIndex()}`);
+	console.log(
+		`ToDo index in ToDos = ${toDoIndex}\nToDo.getIndex() = ${newToDo.getIndex()}`
+	);
 
 	form.remove();
 }
-
-export default addToDo;
