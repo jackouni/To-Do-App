@@ -46,6 +46,8 @@ function radioInput(idName, nameAttr, checked) {
 function titleInputField() {
 	const titleFieldset = fieldset("title-fieldset");
 
+	// Appends appropriate <input type="text"> and <label> elements to a <fieldset>.
+	// Reference: Lines 4 ➡️ 43
 	titleFieldset.append(label("Title: ", "title"));
 	titleFieldset.append(textInput("title", "title"));
 
@@ -56,8 +58,22 @@ function titleInputField() {
 function dueDateInputField() {
 	const dueFieldset = fieldset("due-fieldset");
 
+	// Appends appropriate <input type="text"> and <label> elements.
+	// Reference: Lines 4 ➡️ 43
 	dueFieldset.append(label("due: ", "due"));
 	dueFieldset.append(textInput("due", "due"));
+
+	return dueFieldset;
+}
+
+// Description input fieldset
+function descInputField() {
+	const dueFieldset = fieldset("due-fieldset");
+
+	// Appends appropriate <input type="text"> and <label> elements.
+	// Reference: Lines 4 ➡️ 43
+	dueFieldset.append(label("Description: ", "desc"));
+	dueFieldset.append(textInput("desc", "desc"));
 
 	return dueFieldset;
 }
@@ -66,6 +82,8 @@ function dueDateInputField() {
 function priorityInputField() {
 	const priorityFieldset = fieldset("priority-fieldset");
 
+	// Appends appropriate <input type="radio"> and <label> elements.
+	// Reference: Lines 4 ➡️ 43
 	priorityFieldset.append(label("Priority Low: ", "priority"));
 	priorityFieldset.append(radioInput("priority-low", "priority", true));
 
@@ -87,9 +105,12 @@ function loadForm() {
 	let form = document.createElement("form");
 	form.id = "addToDoForm";
 
+	// Appends fieldsets with appropraite input and label elements.
+	// Reference: Lines 45 ➡️ 79
 	form.append(titleInputField());
 	form.append(dueDateInputField());
 	form.append(priorityInputField());
+	form.append(descInputField());
 	form.append(submitBtn);
 
 	// Handles form submission

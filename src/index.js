@@ -1,11 +1,11 @@
 import "./styles/style.scss";
 
-import { ToDo, ToDos } from "./todo-object";
+import { ToDos, ToDo } from "./objects/ToDo";
 import button from "./components/buttons";
 import header from "./components/header";
 import main from "./components/main";
 import form from "./components/forms";
-import { toDoComponent } from "./components/todos";
+import todo from "./components/todos";
 
 function initialize() {
 	content.append(header());

@@ -24,7 +24,7 @@ function section(titleName) {
 // Will append in array order.
 let components = [nav("Navigation"), section("Today's Tasks")];
 
-// Loads the entire <main> // Contains a <nav> + <section>.
+// Loads the entire <main>
 function loadMain() {
 	let main = document.createElement("main");
 
