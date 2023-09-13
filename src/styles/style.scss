@@ -15,13 +15,6 @@ body * {
 	height: 100%;
 }
 
-header {
-	width: 100%;
-	height: 10%;
-	background-color: red;
-	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.232);
-}
-
 main {
 	display: flex;
 
@@ -31,62 +24,5 @@ main {
 	h2 {
 		margin-top: 10px;
 		text-align: center;
-	}
-
-	nav {
-		display: flex;
-		flex-direction: column;
-
-		width: 20%;
-		height: 100%;
-		box-shadow: 0 10px 10px rgba(0, 0, 0, 0.232);
-	}
-
-	section {
-		display: flex;
-		flex-direction: column;
-
-		width: 80%;
-		height: 100%;
-
-		.todo {
-			display: flex;
-			border: solid black 4px;
-			height: 5%;
-			padding: 5px;
-			margin: 5px;
-			gap: 20px;
-
-			.check-bubble {
-				border: solid black 2px;
-				width: auto;
-				height: 10px;
-				width: 10px;
-				border-radius: 50%;
-			}
-
-			h3 {
-				font-size: 14px;
-			}
-			.urgency-med {
-				color: orange;
-			}
-			.urgency-hi {
-				color: red;
-			}
-		}
-	}
-}
-
-form {
-	padding: 20px;
-	border: solid black 4px;
-	background-color: antiquewhite;
-	position: absolute;
-	top: 20%;
-	left: 20%;
-
-	input[name="priority"] {
-		margin-right: 30px;
 	}
 }

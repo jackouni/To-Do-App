@@ -1,0 +1,27 @@
+.todo {
+	display: flex;
+	height: 25px;
+	padding: 5px;
+	margin: 5px;
+	gap: 20px;
+
+	.check-bubble {
+		border: solid black 2px;
+		width: auto;
+		height: 10px;
+		width: 10px;
+		border-radius: 50%;
+	}
+
+	h3 {
+		font-size: 14px;
+	}
+
+	.urgency-med {
+		color: orange;
+	}
+
+	.urgency-hi {
+		color: red;
+	}
+}
