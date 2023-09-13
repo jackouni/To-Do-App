@@ -1,4 +1,4 @@
-import { todoFactory, todoObjects } from "../objects/ToDos";
+import { todoFactory } from "../objects/todo-object";
 import { TodoComponent, todoElements } from "../components/todos";
 
 export default function addToDo() {
