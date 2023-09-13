@@ -1,46 +1,47 @@
-import { ToDo, ToDos } from "../objects/ToDo";
-import { todoComponent, todos } from "../components/todos";
+import { todoFactory, todoObjects } from "../objects/ToDos";
+import { TodoComponent, todoElements } from "../components/todos";
 
 export default function addToDo() {
 	let form = document.getElementById("addToDoForm");
 
-	let toDoTitle = document.getElementById("title").value;
-	let toDoDate = document.getElementById("due").value;
-	let toDoDesc = document.getElementById("desc").value;
-	let toDoPriority = document.querySelector('input[type="radio"]:checked');
-	let toDoIndex = ToDos.length;
+	let todoTitle = document.getElementById("title").value;
+	let todoDate = document.getElementById("due").value;
+	let todoDesc = document.getElementById("desc").value;
+	let todoPriority = document.querySelector('input[type="radio"]:checked');
+	let todoIndex = todoElements.length;
 
 	let urgencyMarker = null;
-
-	if (toDoPriority.id === "priority-low") {
+	if (todoPriority.id === "priority-low") {
 		urgencyMarker = "!";
 	}
-	if (toDoPriority.id === "priority-med") {
+	if (todoPriority.id === "priority-med") {
 		urgencyMarker = "!!";
 	}
-	if (toDoPriority.id === "priority-hi") {
+	if (todoPriority.id === "priority-hi") {
 		urgencyMarker = "!!!";
 	}
 
-	// Create 'ToDo' object that stores that "todo's" data.
-	let newToDo = ToDo(toDoTitle, toDoDate, toDoDesc, toDoPriority, toDoIndex);
+	// Create 'todo' object that stores that "todo's" data.
+	let newTodoObject = todoFactory(
+		todoTitle,
+		todoDate,
+		todoDesc,
+		todoPriority,
+		todoIndex
+	);
 
-	// Creates a 'todo' component to be displayed in the UI.
-	let newToDoComponent = todoComponent(
-		toDoTitle,
-		toDoDate,
-		toDoDesc,
+	// Creates a 'todo' element to be displayed in the UI.
+	let newTodoElement = TodoComponent(
+		todoTitle,
+		todoDate,
+		todoDesc,
 		urgencyMarker,
-		toDoIndex
+		todoIndex
 	);
 
-	// Appends 'todo' component to 'task' section of UI.
+	// Appends 'todo' element to 'task' section of UI.
 	const taskSection = document.getElementById("tasks");
-	taskSection.append(newToDoComponent);
-
-	console.log(
-		`ToDo index in ToDos = ${toDoIndex}\nToDo.getIndex() = ${newToDo.getIndex()}`
-	);
+	taskSection.append(newTodoElement);
 
 	form.remove();
 }

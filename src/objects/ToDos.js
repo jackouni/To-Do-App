@@ -1,6 +1,6 @@
-let ToDos = [];
+let todoObjects = [];
 
-const ToDo = (title, date, desc, priority, index) => {
+const todoFactory = (title, date, desc, priority, index) => {
 	let _title = title;
 	let _date = date;
 	let _desc = desc;
@@ -19,7 +19,7 @@ const ToDo = (title, date, desc, priority, index) => {
 		} else return;
 	};
 
-	let newToDo = {
+	let newTodo = {
 		getTitle,
 		getDate,
 		getDescription,
@@ -28,10 +28,10 @@ const ToDo = (title, date, desc, priority, index) => {
 		setIndex,
 	};
 
-	ToDos.push(newToDo);
+	todoObjects.push(newTodo);
 
-	console.log("ToDo Created...");
-	return newToDo;
+	console.log("Todo Object Created...");
+	return newTodo;
 };
 
-export { ToDo, ToDos };
+export { todoObjects, todoFactory };
