@@ -1,11 +1,15 @@
 import buttons from "./buttons";
-import form from "./forms";
+import todoForm from "./todoForm";
+import projectForm from "./projectForm";
 
 // Components that will append to <header>
 // Will append in array order.
 let components = [
 	buttons("Add Task", "addTask", "click", () => {
-		content.append(form());
+		content.append(todoForm());
+	}),
+	buttons("Add Project", "addProj", "click", () => {
+		content.append(projectForm());
 	}),
 ];
 

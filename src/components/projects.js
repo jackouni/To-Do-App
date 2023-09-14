@@ -1,5 +1,19 @@
 import button from "./buttons";
 
-let projects = [];
+let projectElements = [];
 
-function ProjectsComponent(name, date, desc, priority, index) {}
+function ProjectComponent(name, index) {
+	let newProject = document.createElement("div");
+	newProject.classList.add("project");
+
+	newProject.id = `project-${index}`;
+
+	let projTitle = document.createElement("h3");
+	projTitle.innerText = name;
+
+	newProject.append(projTitle);
+
+	return newProject;
+}
+
+export { ProjectComponent, projectElements };

@@ -1,8 +1,10 @@
 // Creates a <nav> // Navigation for ToDo's & Projects.
 function nav(titleName) {
 	let nav = document.createElement("nav");
+
 	let title = document.createElement("h2");
 	title.innerText = titleName;
+	nav.id = "nav";
 	nav.append(title);
 
 	return nav;
@@ -22,7 +24,7 @@ function section(titleName) {
 
 // Components that will append to <main>
 // Will append in array order.
-let components = [nav("Navigation"), section("Today's Tasks")];
+let components = [nav("Projects"), section("Tasks")];
 
 // Loads the entire <main>
 function loadMain() {
