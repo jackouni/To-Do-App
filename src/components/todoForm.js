@@ -101,7 +101,7 @@ function priorityInputField() {
 let submitBtn = button("Add", "submit-btn");
 
 // Loads the entire form to be rendered.
-function loadForm() {
+function loadTodoForm() {
 	let form = document.createElement("form");
 	form.id = "addToDoForm";
 
@@ -123,4 +123,4 @@ function loadForm() {
 	return form;
 }
 
-export default loadForm;
+export default loadTodoForm;
