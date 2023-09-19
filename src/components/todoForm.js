@@ -1,5 +1,6 @@
 import button from "./buttons";
 import addToDo from "../logic/add-todo";
+import { projectElements } from "./projects";
 
 // Creates a <fieldset>
 function fieldset(idName) {
@@ -104,6 +105,12 @@ let submitBtn = button("Add", "submit-btn");
 function loadTodoForm() {
 	let form = document.createElement("form");
 	form.id = "addToDoForm";
+
+	if (projectElements.length === 0) {
+		alert("Sorry you need to create a project first.");
+		form.remove();
+		return "error";
+	}
 
 	// Appends fieldsets with appropraite input and label elements.
 	// Reference: Lines 45 ➡️ 79

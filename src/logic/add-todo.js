@@ -1,7 +1,12 @@
 import { todoFactory } from "../objects/todo-object";
 import { TodoComponent, todoElements } from "../components/todos";
+import { projectElements } from "../components/projects";
 
 export default function addToDo() {
+	if (projectElements.length === 0) {
+		console.log("Sorry you need to create a project first.");
+		return;
+	}
 	let form = document.getElementById("addToDoForm");
 
 	let todoTitle = document.getElementById("title").value;
