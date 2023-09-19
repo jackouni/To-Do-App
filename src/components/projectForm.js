@@ -113,7 +113,7 @@ function loadProjectForm() {
 	form.append(submitBtn);
 
 	// Handles form submission
-	// Reference: "src/logic/add-todo.js"
+	// Reference: "src/logic/add-project.js"
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();
 		addProject();

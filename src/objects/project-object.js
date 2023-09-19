@@ -1,16 +1,14 @@
-let projects = [];
+let projectObjects = [];
 
-const projectFactory = (title, date, desc, priority, index) => {
+const projectFactory = (title, date, desc) => {
 	let _title = title;
 	let _date = date;
 	let _desc = desc;
-	let _priority = priority;
-	let _index = index;
+	let _index = projectObjects.length;
 
 	const getTitle = () => _title;
 	const getDate = () => _date;
 	const getDescription = () => _desc;
-	const getPriority = () => _priority;
 	const getIndex = () => _index;
 
 	const setIndex = (newIndex) => {
@@ -23,13 +21,14 @@ const projectFactory = (title, date, desc, priority, index) => {
 		getTitle,
 		getDate,
 		getDescription,
-		getPriority,
 		getIndex,
 		setIndex,
 	};
 
-	projects.push(newProject);
+	projectObjects.push(newProject);
 
-	console.log("Project Created...");
+	console.log("Project Object Created...");
 	return newProject;
 };
+
+export { projectFactory, projectObjects };

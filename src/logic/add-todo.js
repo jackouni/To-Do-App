@@ -22,13 +22,7 @@ export default function addToDo() {
 	}
 
 	// Create 'todo' object that stores that "todo's" data.
-	let newTodoObject = todoFactory(
-		todoTitle,
-		todoDate,
-		todoDesc,
-		todoPriority,
-		todoIndex
-	);
+	todoFactory(todoTitle, todoDate, todoDesc, todoPriority, todoIndex);
 
 	// Creates a 'todo' element to be displayed in the UI.
 	let newTodoElement = TodoComponent(
