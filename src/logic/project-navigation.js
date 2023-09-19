@@ -4,14 +4,16 @@ let userState = {
 };
 
 // Event listener to set current Project
-export function setCurrentProject(event) {
-	if (event.target.classList.contains("project")) {
-		userState.currentProject = event.target.id;
+function setCurrentProject(event) {
+	if (event.target.classList.contains("project-title")) {
+		userState.currentProject = event.target.innerText;
 		console.log("User is now in:", userState.currentProject);
 	}
 }
 
 // Function to check which Project the user is in
-export function getCurrentProject() {
+function getCurrentProject() {
 	return userState.currentProject;
 }
+
+export { setCurrentProject, getCurrentProject };
