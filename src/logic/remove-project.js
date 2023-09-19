@@ -30,7 +30,7 @@ export default function removeProject(event) {
 		// Updates each 'project' element's indexes/identifiers using the projectElements array.
 		for (let i = 0; i < projectElements.length; i++) {
 			projectElements[i].id = `project-${i}`;
-			projectElements[i].index = i;
+			projectElements[i].querySelector(".project-check-bubble").index = i;
 			console.log(`New project element id's: ${projectElements[i].id}`);
 		}
 	}

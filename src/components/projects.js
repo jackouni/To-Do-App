@@ -10,13 +10,17 @@ function ProjectComponent(name) {
 	newProject.classList.add("project");
 
 	let projectIndex = projectElements.length;
-	newProject.index = projectIndex;
+
+	let checkBubble = button("", "", "click", removeProject);
+	checkBubble.classList.add("project-check-bubble");
+	// This 'index' property will be used to identify which element's 'remove' button is being clicked.
+	checkBubble.index = projectIndex;
 
 	// This 'project-index' id property will used to identify the project element we want to remove from the UI.
 	newProject.id = `project-${projectIndex}`;
 	newProject.innerText = name;
 
-	newProject.addEventListener("click", removeProject);
+	newProject.append(checkBubble);
 
 	projectElements.push(newProject);
 
