@@ -1,19 +1,15 @@
 import { todoFactory } from "../objects/todo-object";
-import { TodoComponent, todoElements } from "../components/todos";
-import { projectElements } from "../components/projects";
+import { TodoComponent, allTodoElements } from "../components/todos";
+import { allProjectElements } from "../components/projects";
 
 export default function addToDo() {
-	if (projectElements.length === 0) {
-		console.log("Sorry you need to create a project first.");
-		return;
-	}
 	let form = document.getElementById("addToDoForm");
 
 	let todoTitle = document.getElementById("title").value;
 	let todoDate = document.getElementById("due").value;
 	let todoDesc = document.getElementById("desc").value;
 	let todoPriority = document.querySelector('input[type="radio"]:checked');
-	let todoIndex = todoElements.length;
+	let todoIndex = allTodoElements.length;
 
 	let urgencyMarker = null;
 	if (todoPriority.id === "priority-low") {

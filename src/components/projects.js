@@ -3,16 +3,16 @@ import removeProject from "../logic/remove-project";
 import { setCurrentProject } from "../logic/project-navigation";
 
 // Stores projects we've created.
-let projectElements = [];
+let allProjectElements = [];
 
 // Creates a 'project' component to be displayed in the Nav seciton of UI.
 function ProjectComponent(name) {
 	let newProject = document.createElement("div");
-	newProject.titleName = `project-${name}`;
+	newProject.projectName = `project-${name}`;
 	newProject.classList.add("project");
 
 	// This 'project-index' id property will used to identify the project element we want to remove from the UI.
-	let projectIndex = projectElements.length;
+	let projectIndex = allProjectElements.length;
 	newProject.id = `project-${projectIndex}`;
 
 	let checkBubble = button("", "", "click", removeProject);
@@ -30,10 +30,10 @@ function ProjectComponent(name) {
 	newProject.append(title);
 	newProject.append(checkBubble);
 
-	projectElements.push(newProject);
+	allProjectElements.push(newProject);
 
 	console.log("Project Element Created...");
 	return newProject;
 }
 
-export { ProjectComponent, projectElements };
+export { ProjectComponent, allProjectElements };

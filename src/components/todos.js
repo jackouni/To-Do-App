@@ -2,7 +2,7 @@ import button from "./buttons";
 import removeToDo from "../logic/remove-todo";
 
 // Stores todos we've created.
-let todoElements = [];
+let allTodoElements = [];
 
 // Creates a 'todo' component to be displayed in the UI.
 function TodoComponent(name, date, desc, priority, index) {
@@ -42,9 +42,9 @@ function TodoComponent(name, date, desc, priority, index) {
 	newTodo.append(due);
 	newTodo.append(urgency);
 
-	todoElements.push(newTodo);
+	allTodoElements.push(newTodo);
 
 	return newTodo;
 }
 
-export { TodoComponent, todoElements };
+export { TodoComponent, allTodoElements };

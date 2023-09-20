@@ -1,5 +1,5 @@
 import { todoObjects } from "../objects/todo-object";
-import { todoElements } from "../components/todos";
+import { allTodoElements } from "../components/todos";
 
 export default function removeToDo(event) {
 	const userConfirmed = confirm("Are you sure you want to remove this item?");
@@ -11,12 +11,12 @@ export default function removeToDo(event) {
 		todoObjects.splice(index, 1);
 
 		// Removes the associated 'todo' element from the UI.
-		console.log(`Todo element removed from UI: ${todoElements[index].id}`);
-		todoElements[index].remove();
+		console.log(`Todo element removed from UI: ${allTodoElements[index].id}`);
+		allTodoElements[index].remove();
 
-		// Removes the associated 'todo' element from the todoElements array.
-		console.log(`Element removed from Elements array: ${todoElements[index].id}`);
-		todoElements.splice(index, 1);
+		// Removes the associated 'todo' element from the allTodoElements array.
+		console.log(`Element removed from Elements array: ${allTodoElements[index].id}`);
+		allTodoElements.splice(index, 1);
 
 		// Updates each ToDo object's index/identifier using the todoObjects array.
 		for (let i = 0; i < todoObjects.length; i++) {
@@ -30,10 +30,10 @@ export default function removeToDo(event) {
 			);
 		}
 
-		// Updates each 'todo' element's indexes/identifiers using the todoElements array.
-		for (let i = 0; i < todoElements.length; i++) {
-			todoElements[i].id = `todo-${i}`;
-			todoElements[i].querySelector(".check-bubble").index = i;
+		// Updates each 'todo' element's indexes/identifiers using the allTodoElements array.
+		for (let i = 0; i < allTodoElements.length; i++) {
+			allTodoElements[i].id = `todo-${i}`;
+			allTodoElements[i].querySelector(".check-bubble").index = i;
 		}
 	}
 }

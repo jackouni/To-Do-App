@@ -1,6 +1,6 @@
 import button from "./buttons";
 import addToDo from "../logic/add-todo";
-import { projectElements } from "./projects";
+import { allProjectElements } from "./projects";
 
 // Creates a <fieldset>
 function fieldset(idName) {
@@ -106,7 +106,7 @@ function loadTodoForm() {
 	let form = document.createElement("form");
 	form.id = "addToDoForm";
 
-	if (projectElements.length === 0) {
+	if (allProjectElements.length === 0) {
 		alert("Sorry you need to create a project first.");
 		form.remove();
 		return "error";

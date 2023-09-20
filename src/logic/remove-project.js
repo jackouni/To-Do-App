@@ -1,5 +1,5 @@
 import { projectObjects } from "../objects/project-object";
-import { projectElements } from "../components/projects";
+import { allProjectElements } from "../components/projects";
 
 export default function removeProject(event) {
 	console.log("------------ removeProject() Invoked -------------");
@@ -13,13 +13,13 @@ export default function removeProject(event) {
 		projectObjects.splice(index, 1);
 
 		// Removes the associated 'project' element from the UI.
-		console.log(`project element removed from UI: ${projectElements[index].id}`);
-		projectElements[index].remove();
+		console.log(`project element removed from UI: ${allProjectElements[index].id}`);
+		allProjectElements[index].remove();
 
-		// Removes the associated 'project' element from the projectElements array.
-		console.log(`Element from Elements array: "${projectElements[index].id}"\n
+		// Removes the associated 'project' element from the allProjectElements array.
+		console.log(`Element from Elements array: "${allProjectElements[index].id}"\n
         Removed at index: ${index}`);
-		projectElements.splice(index, 1);
+		allProjectElements.splice(index, 1);
 
 		// Updates each project object's index/identifier using the projectObjects array.
 		for (let i = 0; i < projectObjects.length; i++) {
@@ -27,11 +27,11 @@ export default function removeProject(event) {
 			console.log(`New project object index: ${projectObjects[i].getIndex()}`);
 		}
 
-		// Updates each 'project' element's indexes/identifiers using the projectElements array.
-		for (let i = 0; i < projectElements.length; i++) {
-			projectElements[i].id = `project-${i}`;
-			projectElements[i].querySelector(".project-check-bubble").index = i;
-			console.log(`New project element id's: ${projectElements[i].id}`);
+		// Updates each 'project' element's indexes/identifiers using the allProjectElements array.
+		for (let i = 0; i < allProjectElements.length; i++) {
+			allProjectElements[i].id = `project-${i}`;
+			allProjectElements[i].querySelector(".project-check-bubble").index = i;
+			console.log(`New project element id's: ${allProjectElements[i].id}`);
 		}
 	}
 	console.log("------------ removeProject() complete -------------");
