@@ -1,5 +1,6 @@
 import button from "./buttons";
 import removeToDo from "../logic/remove-todo";
+import { setCurrentProject, getCurrentProject } from "../logic/project-navigation";
 
 // Stores todos we've created.
 let allTodoElements = [];
@@ -9,7 +10,7 @@ function TodoComponent(name, date, desc, priority, index) {
 	let newTodo = document.createElement("div");
 	newTodo.classList.add("todo");
 	// This 'todo-index' id property will used to identify the todo element we want to remove from the UI.
-	newTodo.id = `todo-${index}`;
+	newTodo.id = `todo-${name}`;
 
 	let checkBubble = button("", "", "click", removeToDo);
 	checkBubble.classList.add("check-bubble");
