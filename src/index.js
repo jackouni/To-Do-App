@@ -13,6 +13,7 @@ import { projectFactory } from "./objects/project-object";
 import { TodoComponent } from "./components/todos";
 export { TodoComponent } from "./components/todos";
 import { todoFactory } from "./objects/todo-object";
+import { setCurrentProject } from "./logic/project-navigation";
 
 function initialize() {
 	content.append(header());
