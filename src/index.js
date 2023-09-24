@@ -1,10 +1,17 @@
-console.log("love");
+import "./styles/content.scss";
+import "./styles/css-reset.css";
+import "./styles/header.scss";
+import "./styles/nav.scss";
+import "./styles/main.scss";
+
 import { currentProject } from "./logic/project-nav";
 import { allProjects, projectFactory } from "./objects/project-object";
 import { todoFactory } from "./objects/todo-object";
+import { header } from "./components/Header";
+import { main } from "./components/Main";
+import { nav } from "./components/Nav";
 
-projectFactory("proyo", "Never ever", "Desc");
-todoFactory("Todoy", "Idk man");
-todoFactory("Another", "Someday I will");
+const content = document.getElementById("content");
 
-console.log("\n--------------------------\n");
+content.append(header());
+content.append(main());
