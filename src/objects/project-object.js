@@ -1,15 +1,10 @@
 export let allProjects = [];
 
-export function projectFactory(title, due) {
-	let name = title;
-	let dueDate = due;
-
-	let todos = [];
-
+export function projectFactory(name, due) {
 	let newProject = {
 		name,
-		dueDate,
-		todos,
+		due,
+		todos: [],
 	};
 
 	allProjects.push(newProject);
@@ -17,5 +12,4 @@ export function projectFactory(title, due) {
 	console.log(
 		`Project created...\n ${newProject.name} | Due 👉 ${newProject.dueDate}`
 	);
-	return newProject;
 }
