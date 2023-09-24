@@ -1,3 +1,5 @@
+import { projectForm } from "./projectForm";
+
 function topNavSection() {
 	const topNav = document.createElement("section");
 	topNav.classList.add("nav-section");
@@ -7,6 +9,7 @@ function topNavSection() {
 	const allTodos = document.createElement("div");
 	allTodos.classList.add("nav-option");
 	allTodos.id = "allTodos";
+
 	const allTodosTitle = document.createElement("h3");
 	allTodosTitle.classList.add("nav-title");
 	allTodosTitle.innerText = "All Todos";
@@ -16,6 +19,7 @@ function topNavSection() {
 	const miscTodos = document.createElement("div");
 	miscTodos.classList.add("nav-option");
 	miscTodos.id = "miscTodos";
+
 	const miscTodosTitle = document.createElement("h3");
 	miscTodosTitle.classList.add("nav-title");
 	miscTodosTitle.innerText = "misc";
@@ -25,11 +29,15 @@ function topNavSection() {
 	const addProject = document.createElement("div");
 	addProject.classList.add("nav-option");
 	addProject.id = "addProject";
+
 	const addProjectTitle = document.createElement("h3");
 	addProjectTitle.classList.add("nav-title");
 	addProjectTitle.innerText = "Add Project ";
 	addProject.append(addProjectTitle);
 
+	addProjectTitle.addEventListener("click", () => content.append(projectForm()));
+
+	// Append all components to the topNav section.
 	topNav.append(allTodos);
 	topNav.append(miscTodos);
 	topNav.append(addProject);
