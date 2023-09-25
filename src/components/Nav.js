@@ -35,7 +35,9 @@ function topNavSection() {
 	addProjectTitle.innerText = "Add Project ";
 	addProject.append(addProjectTitle);
 
-	addProjectTitle.addEventListener("click", () => content.append(projectForm()));
+	addProjectTitle.addEventListener("click", () => {
+		content.append(projectForm());
+	});
 
 	// Append all components to the topNav section.
 	topNav.append(allTodos);

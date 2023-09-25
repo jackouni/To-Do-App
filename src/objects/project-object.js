@@ -1,15 +1,14 @@
 export let allProjects = [];
 
-export function projectFactory(name, due) {
+export function projectFactory(name) {
+	console.log(`projectFactory("${name}") invoked`);
 	let newProject = {
 		name,
-		due,
 		todos: [],
 	};
 
 	allProjects.push(newProject);
 
-	console.log(
-		`Project created...\n ${newProject.name} | Due 👉 ${newProject.dueDate}`
-	);
+	console.log(`Project created...\n "${newProject.name}"`);
+	console.log(`allProjects array updated: ${JSON.stringify(allProjects)}`);
 }

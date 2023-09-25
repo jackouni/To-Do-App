@@ -1,4 +1,5 @@
-// Creates a <fieldset>
+import { addProject } from "../logic/add-project";
+
 function fieldset(idName) {
 	const newFieldset = document.createElement("fieldset");
 	newFieldset.id = idName;
@@ -6,16 +7,14 @@ function fieldset(idName) {
 	return newFieldset;
 }
 
-// Creates a <label>
-function label(title, forAttr) {
+function label(labelTitle, forAttr) {
 	const newLabel = document.createElement("label");
-	newLabel.innerText = title;
+	newLabel.innerText = labelTitle;
 	newLabel.for = forAttr;
 
 	return newLabel;
 }
 
-// Creates <input type="text">
 function textInput(idName, nameAttr, min, max) {
 	const newTextInput = document.createElement("input");
 
@@ -28,54 +27,38 @@ function textInput(idName, nameAttr, min, max) {
 	return newTextInput;
 }
 
-// Title input fieldset
-function titleInputField() {
-	const titleFieldset = fieldset("titleFieldset");
+function titleFieldset() {
+	// Reference Lines 3 ➡ 28
+	let titleField = fieldset("titleFieldset");
+	let titleLable = label("Title: ", "title");
+	let titleInputField = textInput("title", "title", 2, 15);
 
-	// Appends appropriate <input type="text"> and <label> elements to a <fieldset>.
-	// Reference: Lines 1 ➡️ 27
-	titleFieldset.append(label("Title: ", "title"));
-	titleFieldset.append(textInput("title", "title", 2, 25));
+	titleField.append(titleLable);
+	titleField.append(titleInputField);
 
-	return titleFieldset;
+	return titleField;
 }
 
-// Due Date input fieldset
-function dueDateInputField() {
-	const dueFieldset = fieldset("dueFieldset");
+function submitBtn() {
+	let btn = document.createElement("button");
+	btn.type = "submit";
+	btn.innerText = "SUBMIT";
 
-	// Appends appropriate <input type="text"> and <label> elements.
-	// Reference: Lines 1 ➡️ 27
-	dueFieldset.append(label("due: ", "due"));
-	dueFieldset.append(textInput("due", "due", 2, 150));
-
-	return dueFieldset;
-}
-
-// Description input fieldset
-function descInputField() {
-	const dueFieldset = fieldset("descFieldset");
-
-	// Appends appropriate <input type="text"> and <label> elements.
-	// Reference: Lines 1 ➡️ 27
-	dueFieldset.append(label("Description: ", "desc"));
-	dueFieldset.append(textInput("desc", "desc"));
-
-	return dueFieldset;
+	return btn;
 }
 
 export function projectForm() {
-	const form = document.createElement("form");
+	let form = document.createElement("form");
 	form.id = "projectForm";
 
-	form.append(titleInputField());
-	form.append(dueDateInputField());
-	form.append(descInputField());
+	form.append(titleFieldset());
+	form.append(submitBtn());
 
-	const submitBtn = document.createElement("btn");
-	submitBtn.innerText = "SUBMIT";
-
-	form.append(submitBtn);
+	form.addEventListener("submit", (event) => {
+		console.log("Submit Event Triggered");
+		event.preventDefault();
+		addProject();
+	});
 
 	return form;
 }
