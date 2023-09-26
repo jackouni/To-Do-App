@@ -1,6 +1,8 @@
 import { projectForm } from "./projectForm";
 import { allProjects } from "../objects/project-object";
+import { setCurrentProject } from "../logic/project-nav";
 
+// The top section of the Nav. Will be used to display the 'All Todos' option
 function topNavSection() {
 	const topNav = document.createElement("section");
 	topNav.classList.add("nav-section");
@@ -8,7 +10,7 @@ function topNavSection() {
 
 	// 'All Todos' Nav Option
 	const allTodos = document.createElement("div");
-	allTodos.classList.add("nav-option");
+	allTodos.classList.add("project-nav-title");
 	allTodos.id = "allTodos";
 
 	const allTodosTitle = document.createElement("h3");
@@ -48,6 +50,7 @@ function topNavSection() {
 	return topNav;
 }
 
+// Section below topNavSection that will display Project Names a user creates
 function projectNavSection() {
 	const projectNav = document.createElement("section");
 	projectNav.classList.add("nav-section");
@@ -65,22 +68,28 @@ export function nav() {
 	return nav;
 }
 
+// Renders the Project Nav Elements in the projectNavSection.
+// Reference lines 51 ➡️ 57
 export function renderProjects() {
 	console.log("renderProjects() invoked");
 
-	// Clears all project elements, so that they can be re-rendered (Lines 75 ➡️ 90)
+	// Clears all project-nav-item elements from the projectNavSection.
+	// This is done so that these elements can be re-rendered without repeating.
 	let allProjectElements = document.querySelectorAll(".project-nav-item");
 	allProjectElements.forEach((element) => element.remove());
 
-	// Renders each Project's 'name' from the allProjects array to the projectsNav of the UI.
+	// Renders each Project's 'name' from the allProjects array to the projectNav of the UI.
 	for (let i = 0; i < allProjects.length; i++) {
-		let projectReference = allProjects[i];
+		let project = allProjects[i];
+
 		let newProjectContainer = document.createElement("div");
 		newProjectContainer.classList.add("project-nav-item");
 
-		let newProjectTitle = document.createElement("h3");
-		newProjectTitle.projectElementName = `${projectReference.name}`;
-		newProjectTitle.innerText = projectReference.name;
+		let newProjectTitle = document.createElement("h4");
+		newProjectTitle.classList.add("project-nav-title");
+		newProjectTitle.elementName = project.name;
+		newProjectTitle.innerText = project.name;
+		newProjectTitle.addEventListener("click", (event) => setCurrentProject(event));
 
 		newProjectContainer.append(newProjectTitle);
 
