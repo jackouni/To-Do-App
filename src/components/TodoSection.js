@@ -35,3 +35,33 @@ export function renderProjectTitle() {
 	let projectTitle = document.getElementById("projectTitle");
 	projectTitle.innerText = currentProject().name;
 }
+
+export function renderTodos() {
+	console.log("renderTodos() invoked");
+	let project = currentProject();
+	let projectTodos = project.todos;
+
+	// This is done so that these elements can be re-rendered without repeating.
+	let todoElements = document.querySelectorAll(".todo-item");
+	todoElements.forEach((element) => element.remove());
+
+	projectTodos.forEach((todo) => {
+		let todoContainer = document.createElement("div");
+		todoContainer.classList.add("todo-item");
+
+		let checkBox = document.createElement("button");
+		checkBox.classList.add("checkbox");
+		checkBox.elementName = todo.name;
+
+		let todoTitle = document.createElement("h4");
+		todoTitle.classList.add("todo-title");
+		todoTitle.innerText = todo.name;
+		todoTitle.elementName = todo.name;
+
+		todoContainer.append(checkBox);
+		todoContainer.append(todoTitle);
+
+		let todosDisplay = document.getElementById("todosDisplay");
+		todosDisplay.append(todoContainer);
+	});
+}

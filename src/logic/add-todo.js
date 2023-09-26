@@ -1,4 +1,5 @@
 import { todoFactory } from "../objects/todo-object";
+import { renderTodos } from "../components/TodoSection";
 
 function addTodo() {
 	console.log("addTodo() invoked");
@@ -7,6 +8,7 @@ function addTodo() {
 
 	form.remove();
 	todoFactory(todoTitle);
+	renderTodos();
 }
 
 export { addTodo };

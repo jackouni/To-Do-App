@@ -1,5 +1,6 @@
 import { allProjects } from "../objects/project-object";
 import { renderProjectTitle } from "../components/TodoSection";
+import { renderTodos } from "../components/TodoSection";
 
 // Used to track a "User's current state" - what project is open/active in the UI?
 // Used to determine what Project's Todos to render and what projects to save new Todos to.
@@ -12,9 +13,11 @@ export function setCurrentProject(event) {
 	if (event instanceof Event) {
 		userState.currentProject = event.target.elementName;
 		renderProjectTitle();
+		renderTodos();
 		console.log("User is now in:", userState.currentProject);
 	} else {
 		userState.currentProject = event;
+		renderTodos();
 		console.log("User is now in:", userState.currentProject);
 	}
 }
