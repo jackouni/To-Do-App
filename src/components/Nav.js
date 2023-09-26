@@ -18,16 +18,6 @@ function topNavSection() {
 	allTodosTitle.innerText = "All Todos";
 	allTodos.append(allTodosTitle);
 
-	// 'Misc Todos' Nav Option
-	const miscTodos = document.createElement("div");
-	miscTodos.classList.add("nav-option");
-	miscTodos.id = "miscTodos";
-
-	const miscTodosTitle = document.createElement("h3");
-	miscTodosTitle.classList.add("nav-title");
-	miscTodosTitle.innerText = "misc";
-	miscTodos.append(miscTodosTitle);
-
 	// 'Add Project' Nav Option
 	const addProject = document.createElement("div");
 	addProject.classList.add("nav-option");
@@ -44,7 +34,6 @@ function topNavSection() {
 
 	// Append all components to the topNav section.
 	topNav.append(allTodos);
-	topNav.append(miscTodos);
 	topNav.append(addProject);
 
 	return topNav;
@@ -89,7 +78,9 @@ export function renderProjects() {
 		newProjectTitle.classList.add("project-nav-title");
 		newProjectTitle.elementName = project.name;
 		newProjectTitle.innerText = project.name;
-		newProjectTitle.addEventListener("click", (event) => setCurrentProject(event));
+		newProjectTitle.addEventListener("click", (event) => {
+			setCurrentProject(event);
+		});
 
 		newProjectContainer.append(newProjectTitle);
 

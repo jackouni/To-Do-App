@@ -1,4 +1,6 @@
 import { todoForm } from "./TodoForm";
+import { currentProject } from "../logic/project-nav";
+
 export function todoSection() {
 	const todoMain = document.createElement("div");
 	todoMain.id = "todoMain";
@@ -8,7 +10,7 @@ export function todoSection() {
 
 	const projectTitle = document.createElement("h2");
 	projectTitle.id = "projectTitle";
-	projectTitle.innerText = "Project Name";
+	projectTitle.innerText = currentProject();
 
 	const todosDisplay = document.createElement("div");
 	todosDisplay.id = "todosDisplay";
@@ -27,4 +29,9 @@ export function todoSection() {
 	todoMain.append(todosDisplay);
 
 	return todoMain;
+}
+
+export function renderProjectTitle() {
+	let projectTitle = document.getElementById("projectTitle");
+	projectTitle.innerText = currentProject().name;
 }
