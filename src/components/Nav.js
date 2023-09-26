@@ -1,4 +1,5 @@
 import { projectForm } from "./projectForm";
+import { allProjects } from "../objects/project-object";
 
 function topNavSection() {
 	const topNav = document.createElement("section");
@@ -62,4 +63,28 @@ export function nav() {
 	nav.append(projectNavSection());
 
 	return nav;
+}
+
+export function renderProjects() {
+	console.log("renderProjects() invoked");
+
+	// Clears all project elements, so that they can be re-rendered (Lines 75 ➡️ 90)
+	let allProjectElements = document.querySelectorAll(".project-nav-item");
+	allProjectElements.forEach((element) => element.remove());
+
+	// Renders each Project's 'name' from the allProjects array to the projectsNav of the UI.
+	for (let i = 0; i < allProjects.length; i++) {
+		let projectReference = allProjects[i];
+		let newProjectContainer = document.createElement("div");
+		newProjectContainer.classList.add("project-nav-item");
+
+		let newProjectTitle = document.createElement("h3");
+		newProjectTitle.projectElementName = `${projectReference.name}`;
+		newProjectTitle.innerText = projectReference.name;
+
+		newProjectContainer.append(newProjectTitle);
+
+		const projectNav = document.getElementById("projectNav");
+		projectNav.append(newProjectContainer);
+	}
 }

@@ -1,4 +1,5 @@
 import { projectFactory } from "../objects/project-object";
+import { renderProjects } from "../components/Nav";
 
 function addProject() {
 	console.log("addProject() invoked");
@@ -7,6 +8,7 @@ function addProject() {
 
 	form.remove();
 	projectFactory(projectTitle);
+	renderProjects();
 }
 
 export { addProject };
