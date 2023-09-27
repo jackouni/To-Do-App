@@ -1,5 +1,6 @@
 import { todoForm } from "./TodoForm";
-import { currentProject } from "../logic/project-nav";
+import { currentProject, setCurrentProject } from "../logic/project-nav";
+import { allProjects } from "../objects/project-object";
 
 export function todoSection() {
 	const todoMain = document.createElement("div");
@@ -33,7 +34,8 @@ export function todoSection() {
 
 export function renderProjectTitle() {
 	let projectTitle = document.getElementById("projectTitle");
-	projectTitle.innerText = currentProject().name;
+	let project = currentProject();
+	projectTitle.innerText = project.name;
 }
 
 export function renderTodos() {
@@ -63,5 +65,38 @@ export function renderTodos() {
 
 		let todosDisplay = document.getElementById("todosDisplay");
 		todosDisplay.append(todoContainer);
+	});
+}
+
+export function renderAllTodos() {
+	// This is done so that these elements can be re-rendered without repeating.
+	let todoElements = document.querySelectorAll(".todo-item");
+	todoElements.forEach((element) => element.remove());
+
+	let projectTitle = document.getElementById("projectTitle");
+	projectTitle.innerText = "All Todos";
+
+	allProjects.forEach((project) => {
+		let projectTodos = project.todos;
+
+		projectTodos.forEach((todo) => {
+			let todoContainer = document.createElement("div");
+			todoContainer.classList.add("todo-item");
+
+			let checkBox = document.createElement("button");
+			checkBox.classList.add("checkbox");
+			checkBox.elementName = todo.name;
+
+			let todoTitle = document.createElement("h4");
+			todoTitle.classList.add("todo-title");
+			todoTitle.innerText = todo.name;
+			todoTitle.elementName = todo.name;
+
+			todoContainer.append(checkBox);
+			todoContainer.append(todoTitle);
+
+			let todosDisplay = document.getElementById("todosDisplay");
+			todosDisplay.append(todoContainer);
+		});
 	});
 }

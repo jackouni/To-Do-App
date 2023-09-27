@@ -5,6 +5,7 @@ import "./styles/header.scss";
 import "./styles/nav.scss";
 import "./styles/main.scss";
 import "./styles/todos.scss";
+import "./styles/project.scss";
 
 import { currentProject } from "./logic/project-nav";
 import { allProjects, projectFactory } from "./objects/project-object";

@@ -1,6 +1,9 @@
 import { projectForm } from "./projectForm";
 import { allProjects } from "../objects/project-object";
 import { setCurrentProject } from "../logic/project-nav";
+import { renderAllTodos } from "./TodoSection";
+import deleteImg from "../assets/imgs/delete-project-icon.png";
+import { removeProject } from "../logic/remove-project";
 
 // The top section of the Nav. Will be used to display the 'All Todos' option
 function topNavSection() {
@@ -12,6 +15,10 @@ function topNavSection() {
 	const allTodos = document.createElement("div");
 	allTodos.classList.add("project-nav-title");
 	allTodos.id = "allTodos";
+	allTodos.elementName = "All Todos";
+	allTodos.addEventListener("click", () => {
+		setCurrentProject("All Todos");
+	});
 
 	const allTodosTitle = document.createElement("h3");
 	allTodosTitle.classList.add("nav-title");
@@ -73,6 +80,7 @@ export function renderProjects() {
 
 		let newProjectContainer = document.createElement("div");
 		newProjectContainer.classList.add("project-nav-item");
+		newProjectContainer.elementName = project.name;
 
 		let newProjectTitle = document.createElement("h4");
 		newProjectTitle.classList.add("project-nav-title");
@@ -84,7 +92,32 @@ export function renderProjects() {
 
 		newProjectContainer.append(newProjectTitle);
 
+		let iconContainer = document.createElement("div");
+		iconContainer.classList.add("delete-container");
+
+		let deleteIcon = new Image();
+		deleteIcon.src = deleteImg;
+		deleteIcon.classList.add("delete-img");
+		deleteIcon.deleteName = project.name;
+		deleteIcon.addEventListener("click", (event) => removeProject(event));
+
+		iconContainer.appendChild(deleteIcon);
+		newProjectContainer.append(iconContainer);
+
 		const projectNav = document.getElementById("projectNav");
 		projectNav.append(newProjectContainer);
 	}
+}
+
+export function deleteProjectElement(projectName) {
+	console.log(`deleteProjectElement("${projectName}") invoked`);
+
+	let allProjectElements = document.querySelectorAll(".project-nav-item");
+
+	allProjectElements.forEach((element) => {
+		if (element.elementName === projectName) {
+			element.remove();
+			setCurrentProject("All Todos");
+		}
+	});
 }
