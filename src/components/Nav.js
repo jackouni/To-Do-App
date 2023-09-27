@@ -108,7 +108,7 @@ export function renderProjects() {
 	}
 }
 
-export function deleteProjectElement(projectName) {
+export function removeProjectElement(projectName) {
 	console.log(`deleteProjectElement("${projectName}") invoked`);
 
 	let allProjectElements = document.querySelectorAll(".project-nav-item");

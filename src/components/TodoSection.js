@@ -1,6 +1,7 @@
 import { todoForm } from "./TodoForm";
 import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
 import { allProjects } from "../objects/project-object";
+import { removeTodo } from "../logic/remove-todo";
 
 export function todoSection() {
 	const todoMain = document.createElement("div");
@@ -50,10 +51,13 @@ export function renderTodos() {
 	projectTodos.forEach((todo) => {
 		let todoContainer = document.createElement("div");
 		todoContainer.classList.add("todo-item");
+		todoContainer.elementName = todo.name;
 
 		let checkBox = document.createElement("button");
 		checkBox.classList.add("checkbox");
 		checkBox.elementName = todo.name;
+		checkBox.project = todo.projectName;
+		checkBox.addEventListener("click", (event) => removeTodo(event));
 
 		let todoTitle = document.createElement("h4");
 		todoTitle.classList.add("todo-title");
@@ -82,10 +86,13 @@ export function renderAllTodos() {
 		projectTodos.forEach((todo) => {
 			let todoContainer = document.createElement("div");
 			todoContainer.classList.add("todo-item");
+			todoContainer.elementName = todo.name;
 
 			let checkBox = document.createElement("button");
 			checkBox.classList.add("checkbox");
 			checkBox.elementName = todo.name;
+			checkBox.project = todo.projectName;
+			checkBox.addEventListener("click", (event) => removeTodo(event));
 
 			let todoTitle = document.createElement("h4");
 			todoTitle.classList.add("todo-title");
@@ -98,5 +105,17 @@ export function renderAllTodos() {
 			let todosDisplay = document.getElementById("todosDisplay");
 			todosDisplay.append(todoContainer);
 		});
+	});
+}
+
+export function removeTodoElement(todoName) {
+	console.log(`removeTodoElement("${todoName}") invoked`);
+
+	let allTodoElements = document.querySelectorAll(".todo-item");
+
+	allTodoElements.forEach((element) => {
+		if (element.elementName === todoName) {
+			element.remove();
+		}
 	});
 }

@@ -1,18 +1,30 @@
 import { allProjects } from "../objects/project-object";
-import { deleteProjectElement } from "../components/Nav";
+import { getProjectIndex } from "./project-nav";
+import { removeTodoElement } from "../components/TodoSection";
 
 export function removeTodo(event) {
 	console.log(`removeTodo(event) invoked`);
 
-	let projectName = event.target.deleteName;
+	// The 'elementName' of the target === The name property of it's todo.
+	let todoName = event.target.elementName;
 
-	let index = allProjects.findIndex((project) => project.name === projectName);
+	// The 'project' property of the target === The name property of the project the todo is in.
+	let projectName = event.target.project;
 
-	allProjects.splice(index, 1);
+	let projectIndex = getProjectIndex(projectName);
 
-	console.log(
-		`allProjects spliced at index, ${index}. \nUpdated allProjects array: ${allProjects} `
+	let todoIndex = allProjects[projectIndex].todos.findIndex(
+		(todo) => todo.name === todoName
 	);
 
-	deleteProjectElement(projectName);
+	//Remove Todo from Project
+	allProjects[projectIndex].todos.splice(todoIndex, 1);
+
+	console.log(
+		`Todo removed from the project, ${projectName}. \nTodo removed at index, ${todoIndex} of todos array.\n Updated todos array: ${JSON.stringify(
+			allProjects[projectIndex].todos
+		)}`
+	);
+
+	removeTodoElement(todoName);
 }

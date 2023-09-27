@@ -1,5 +1,5 @@
 import { allProjects } from "../objects/project-object";
-import { deleteProjectElement } from "../components/Nav";
+import { removeProjectElement } from "../components/Nav";
 import { getProjectIndex } from "./project-nav";
 
 export function removeProject(event) {
@@ -15,5 +15,5 @@ export function removeProject(event) {
 		`allProjects spliced at index, ${index}. \nUpdated allProjects array: ${allProjects} `
 	);
 
-	deleteProjectElement(projectName);
+	removeProjectElement(projectName);
 }
