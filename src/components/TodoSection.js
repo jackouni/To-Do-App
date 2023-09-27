@@ -1,5 +1,5 @@
 import { todoForm } from "./TodoForm";
-import { currentProject, setCurrentProject } from "../logic/project-nav";
+import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
 import { allProjects } from "../objects/project-object";
 
 export function todoSection() {
@@ -11,7 +11,7 @@ export function todoSection() {
 
 	const projectTitle = document.createElement("h2");
 	projectTitle.id = "projectTitle";
-	projectTitle.innerText = currentProject();
+	projectTitle.innerText = getCurrentProject();
 
 	const todosDisplay = document.createElement("div");
 	todosDisplay.id = "todosDisplay";
@@ -34,13 +34,13 @@ export function todoSection() {
 
 export function renderProjectTitle() {
 	let projectTitle = document.getElementById("projectTitle");
-	let project = currentProject();
+	let project = getCurrentProject();
 	projectTitle.innerText = project.name;
 }
 
 export function renderTodos() {
 	console.log("renderTodos() invoked");
-	let project = currentProject();
+	let project = getCurrentProject();
 	let projectTodos = project.todos;
 
 	// This is done so that these elements can be re-rendered without repeating.

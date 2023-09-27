@@ -27,7 +27,7 @@ export function setCurrentProject(event) {
 }
 
 // Function returns the currently active/open project from allProjects array.
-export function currentProject() {
+export function getCurrentProject() {
 	if (userState.currentProject === "All Todos") {
 		return userState.currentProject;
 	} else {
@@ -37,4 +37,10 @@ export function currentProject() {
 		);
 		return projectObject;
 	}
+}
+
+export function getProjectIndex(projectName) {
+	let index = allProjects.findIndex((project) => project.name === projectName);
+
+	return index;
 }

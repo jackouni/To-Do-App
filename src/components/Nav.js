@@ -1,7 +1,6 @@
 import { projectForm } from "./projectForm";
 import { allProjects } from "../objects/project-object";
 import { setCurrentProject } from "../logic/project-nav";
-import { renderAllTodos } from "./TodoSection";
 import deleteImg from "../assets/imgs/delete-project-icon.png";
 import { removeProject } from "../logic/remove-project";
 

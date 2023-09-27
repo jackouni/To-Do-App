@@ -1,17 +1,24 @@
-import { currentProject } from "../logic/project-nav";
+import { getCurrentProject } from "../logic/project-nav";
 
 export function todoFactory(name) {
+	let projectName = getCurrentProject().name;
+
 	let newTodo = {
 		name,
+		projectName,
 	};
 
-	console.log(`Todo created...\n ${newTodo.name}`);
+	console.log(
+		`Todo created... "${newTodo.name}" \nnewTodo.projectName === "${newTodo.projectName}"`
+	);
 
-	currentProject().todos.push(newTodo);
+	getCurrentProject().todos.push(newTodo);
 
 	console.log(
 		`• Todo: '${newTodo.name}' Pushed to project: ${
-			currentProject().name
-		} ... \n• In project's 'todos' array: ${JSON.stringify(currentProject().todos)}`
+			getCurrentProject().name
+		} ... \n• In project's 'todos' array: ${JSON.stringify(
+			getCurrentProject().todos
+		)}`
 	);
 }
