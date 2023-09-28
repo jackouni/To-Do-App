@@ -26,3 +26,17 @@ export function isDuplicatedTodoName() {
 
 	return isDuplicatedName;
 }
+
+export function isProjectFormActive() {
+	if (document.querySelector("#projectForm")) {
+		let projectForm = document.querySelector("#projectForm");
+		projectForm.remove();
+	}
+}
+
+export function isTodoFormActive() {
+	if (document.querySelector("#todoForm")) {
+		let todoForm = document.querySelector("#todoForm");
+		todoForm.remove();
+	}
+}

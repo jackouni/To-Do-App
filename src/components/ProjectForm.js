@@ -1,5 +1,13 @@
 import { addProject } from "../logic/add-project";
-import { isDuplicatedProjectName } from "../logic/form-validation";
+import { isDuplicatedProjectName, isTodoFormActive } from "../logic/form-validation";
+
+function formTitle() {
+	let newTitle = document.createElement("h2");
+	newTitle.classList.add("formTitle");
+	newTitle.innerText = "New Project";
+
+	return newTitle;
+}
 
 function fieldset(idName) {
 	const newFieldset = document.createElement("fieldset");
@@ -42,18 +50,47 @@ function titleFieldset() {
 
 function submitBtn() {
 	let btn = document.createElement("button");
+	btn.id = "submitBtn";
 	btn.type = "submit";
 	btn.innerText = "SUBMIT";
 
 	return btn;
 }
 
+function cancelBtn() {
+	let btn = document.createElement("button");
+	btn.id = "cancelBtn";
+	btn.type = "button";
+	btn.innerText = "CANCEL";
+	btn.addEventListener("click", () => {
+		if (document.querySelector("#projectForm")) {
+			let form = document.querySelector("#projectForm");
+			form.remove();
+		}
+	});
+
+	return btn;
+}
+
+function btnsContainer() {
+	let btnContainer = document.createElement("div");
+	btnContainer.id = "btnsContainer";
+
+	btnContainer.append(submitBtn());
+	btnContainer.append(cancelBtn());
+
+	return btnContainer;
+}
+
 export function projectForm() {
+	isTodoFormActive();
+
 	let form = document.createElement("form");
 	form.id = "projectForm";
 
+	form.append(formTitle());
 	form.append(titleFieldset());
-	form.append(submitBtn());
+	form.append(btnsContainer());
 
 	form.addEventListener("submit", (event) => {
 		console.log("Submit Event Triggered");

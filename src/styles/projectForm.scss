@@ -12,16 +12,35 @@ form {
 	border: solid black 2px;
 }
 
+.formTitle {
+	align-self: center;
+}
+
 fieldset {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-btn {
+#btnContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 20px;
+}
+
+#submitBtn {
 	border: solid black 2px;
 	border-radius: 5px;
-	background-color: rgba(255, 0, 0, 0.291);
-	width: fit-content;
+	background-color: rgba(255, 0, 0, 0.531);
+	width: 40%;
+	align-self: center;
+}
+
+#cancelBtn {
+	border: solid black 2px;
+	border-radius: 5px;
+	background-color: rgba(195, 195, 195, 0.291);
+	width: 40%;
 	align-self: center;
 }
