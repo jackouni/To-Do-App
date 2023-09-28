@@ -5,9 +5,11 @@ function addTodo() {
 	console.log("addTodo() invoked");
 	let form = document.getElementById("todoForm");
 	let todoTitle = document.getElementById("title").value;
+	let dateInput = document.getElementById("date").value;
+	let descInput = document.getElementById("desc").value;
 
 	form.remove();
-	todoFactory(todoTitle);
+	todoFactory(todoTitle, dateInput, descInput);
 	renderTodos();
 }
 

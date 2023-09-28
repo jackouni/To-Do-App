@@ -1,3 +1,4 @@
+import { parse, format } from "date-fns";
 import { addTodo } from "../logic/add-todo";
 import { isDuplicatedTodoName, isProjectFormActive } from "../logic/form-validation";
 
@@ -36,6 +37,27 @@ function textInput(idName, nameAttr, min, max) {
 	return newTextInput;
 }
 
+function dateInput(idName, nameAttr) {
+	const newDateInput = document.createElement("input");
+
+	newDateInput.type = "date";
+	newDateInput.id = idName;
+	newDateInput.name = nameAttr;
+
+	return newDateInput;
+}
+
+function textareaInput(idName, nameAttr, row, col) {
+	const newTextarea = document.createElement("textarea");
+
+	newTextarea.id = idName;
+	newTextarea.name = nameAttr;
+	newTextarea.rows = row;
+	newTextarea.cols = col;
+
+	return newTextarea;
+}
+
 function titleFieldset() {
 	// Reference Lines 3 ➡ 28
 	let titleField = fieldset("titleFieldset");
@@ -46,6 +68,28 @@ function titleFieldset() {
 	titleField.append(titleInputField);
 
 	return titleField;
+}
+
+function dateFieldset() {
+	let dateField = fieldset("dateFieldset");
+	let dateLable = label("Date: ", "date");
+	let dateInputField = dateInput("date", "date");
+
+	dateField.append(dateLable);
+	dateField.append(dateInputField);
+
+	return dateField;
+}
+
+function descFieldset() {
+	let descField = fieldset("descFieldset");
+	let descLable = label("Description: ", "desc");
+	let descTextarea = textareaInput("desc", "desc", 4, 15);
+
+	descField.append(descLable);
+	descField.append(descTextarea);
+
+	return descField;
 }
 
 function submitBtn() {
@@ -84,11 +128,14 @@ function btnsContainer() {
 
 export function todoForm() {
 	isProjectFormActive();
+
 	let form = document.createElement("form");
 	form.id = "todoForm";
 
 	form.append(formTitle());
 	form.append(titleFieldset());
+	form.append(dateFieldset());
+	form.append(descFieldset());
 	form.append(btnsContainer());
 
 	form.addEventListener("submit", (event) => {

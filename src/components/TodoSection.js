@@ -70,8 +70,13 @@ export function renderTodos() {
 		todoTitle.innerText = todo.name;
 		todoTitle.elementName = todo.name;
 
+		let todoDate = document.createElement("p");
+		todoDate.classList.add("todo-date");
+		todoDate.innerText = todo.formatDate();
+
 		todoContainer.append(checkBox);
 		todoContainer.append(todoTitle);
+		todoContainer.append(todoDate);
 
 		let todosDisplay = document.getElementById("todosDisplay");
 		todosDisplay.append(todoContainer);
@@ -79,6 +84,7 @@ export function renderTodos() {
 }
 
 export function renderAllTodos() {
+	console.log("renderAllTodos() invoked");
 	// This is done so that these elements can be re-rendered without repeating.
 	let todoElements = document.querySelectorAll(".todo-item");
 	todoElements.forEach((element) => element.remove());

@@ -1,3 +1,6 @@
+#todoMain {
+	width: 100%;
+}
 #todosDisplay {
 	width: 100%;
 	height: 100%;
@@ -6,4 +9,15 @@
 	display: flex;
 	width: 100%;
 	height: 24px;
+}
+
+.todo-title {
+	margin-left: 10px;
+}
+
+.todo-date {
+	font-size: 15px;
+	font-style: italic;
+	color: rgba(0, 0, 0, 0.472);
+	margin-left: 12%;
 }
