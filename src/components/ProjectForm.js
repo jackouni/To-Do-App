@@ -1,4 +1,5 @@
 import { addProject } from "../logic/add-project";
+import { isDuplicatedProjectName } from "../logic/form-validation";
 
 function fieldset(idName) {
 	const newFieldset = document.createElement("fieldset");
@@ -57,7 +58,13 @@ export function projectForm() {
 	form.addEventListener("submit", (event) => {
 		console.log("Submit Event Triggered");
 		event.preventDefault();
-		addProject();
+		if (isDuplicatedProjectName()) {
+			alert(
+				"Cannot have duplicated or repeated project name. A project's name must be unique to others."
+			);
+		} else {
+			addProject();
+		}
 	});
 
 	return form;

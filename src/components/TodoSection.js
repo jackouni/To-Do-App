@@ -21,7 +21,13 @@ export function todoSection() {
 	addTodo.innerText = "Add Todo";
 	addTodo.id = "addTodo";
 	addTodo.addEventListener("click", () => {
-		content.append(todoForm());
+		if (allProjects.length === 0) {
+			alert("Please create a project first, to store your todos in.");
+		} else if (getCurrentProject() === "All Todos") {
+			alert("Open/Select a project to add your 'todo' to.");
+		} else {
+			content.append(todoForm());
+		}
 	});
 
 	todosDisplay.append(addTodo);

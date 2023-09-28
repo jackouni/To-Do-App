@@ -1,4 +1,5 @@
 import { addTodo } from "../logic/add-todo";
+import { isDuplicatedTodoName } from "../logic/form-validation";
 
 function fieldset(idName) {
 	const newFieldset = document.createElement("fieldset");
@@ -57,7 +58,13 @@ export function todoForm() {
 	form.addEventListener("submit", (event) => {
 		console.log("Submit Event Triggered");
 		event.preventDefault();
-		addTodo();
+		if (isDuplicatedTodoName()) {
+			alert(
+				"Todo names must be unique, and not the same as other todo names in your project."
+			);
+		} else {
+			addTodo();
+		}
 	});
 
 	return form;
