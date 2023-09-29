@@ -2,6 +2,7 @@ import { projectForm } from "./projectForm";
 import { allProjects } from "../objects/project-object";
 import { setCurrentProject } from "../logic/project-nav";
 import deleteImg from "../assets/imgs/delete-project-icon.png";
+import addProjectImg from "../assets/imgs/add-project-icon.png";
 import { removeProject } from "../logic/remove-project";
 
 // The top section of the Nav. Will be used to display the 'All Todos' option
@@ -10,6 +11,29 @@ function topNavSection() {
 	topNav.classList.add("nav-section");
 	topNav.id = "topNav";
 
+	// 'Add Project' Nav Option
+	const addProjectContainer = document.createElement("div");
+	addProjectContainer.classList.add("nav-option");
+	addProjectContainer.id = "addProject";
+
+	let addProjectIcon = new Image();
+	addProjectIcon.src = addProjectImg;
+	addProjectIcon.id = "addProjectImg";
+
+	addProjectContainer.append(addProjectIcon);
+
+	addProjectIcon.addEventListener("click", () => {
+		content.append(projectForm());
+	});
+
+	// Append all components to the topNav section.
+	topNav.append(allTodosItem());
+	topNav.append(addProjectContainer);
+
+	return topNav;
+}
+
+function allTodosItem() {
 	// 'All Todos' Nav Option
 	const allTodos = document.createElement("div");
 	allTodos.classList.add("project-nav-title");
@@ -24,31 +48,12 @@ function topNavSection() {
 	allTodosTitle.innerText = "All Todos";
 	allTodos.append(allTodosTitle);
 
-	// 'Add Project' Nav Option
-	const addProject = document.createElement("div");
-	addProject.classList.add("nav-option");
-	addProject.id = "addProject";
-
-	const addProjectTitle = document.createElement("h3");
-	addProjectTitle.classList.add("nav-title");
-	addProjectTitle.innerText = "Add Project ";
-	addProject.append(addProjectTitle);
-
-	addProjectTitle.addEventListener("click", () => {
-		content.append(projectForm());
-	});
-
-	// Append all components to the topNav section.
-	topNav.append(allTodos);
-	topNav.append(addProject);
-
-	return topNav;
+	return allTodos;
 }
 
 // Section below topNavSection that will display Project Names a user creates
 function projectNavSection() {
 	const projectNav = document.createElement("section");
-	projectNav.classList.add("nav-section");
 	projectNav.id = "projectNav";
 
 	return projectNav;

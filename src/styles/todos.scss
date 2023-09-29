@@ -1,6 +1,39 @@
 #todoMain {
 	width: 100%;
 }
+
+#topSection {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	margin: 5px;
+	height: 10%;
+}
+
+#addTodo {
+	height: 28px;
+}
+
+#addTodoImg {
+	height: 100%;
+	opacity: 0.5;
+}
+
+#projectTitle {
+	text-align: center;
+}
+
+#addTodo {
+	margin-bottom: 17.5px;
+}
+
+.checkbox {
+	margin-top: 5px;
+	height: 50%;
+	border: solid black 2px;
+	border-radius: 50%;
+}
+
 #todosDisplay {
 	width: 100%;
 	height: 100%;
@@ -19,5 +52,5 @@
 	font-size: 15px;
 	font-style: italic;
 	color: rgba(0, 0, 0, 0.472);
-	margin-left: 12%;
+	margin-left: 5px;
 }

@@ -2,6 +2,7 @@ import { todoForm } from "./TodoForm";
 import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
 import { allProjects } from "../objects/project-object";
 import { removeTodo } from "../logic/remove-todo";
+import addTodoImg from "../assets/imgs/add-task-icon.png";
 
 export function todoSection() {
 	const todoMain = document.createElement("div");
@@ -17,10 +18,13 @@ export function todoSection() {
 	const todosDisplay = document.createElement("div");
 	todosDisplay.id = "todosDisplay";
 
-	const addTodo = document.createElement("h3");
-	addTodo.innerText = "Add Todo";
-	addTodo.id = "addTodo";
-	addTodo.addEventListener("click", () => {
+	const addTodoContainer = document.createElement("div");
+	addTodoContainer.id = "addTodo";
+
+	let addTodoIcon = new Image();
+	addTodoIcon.src = addTodoImg;
+	addTodoIcon.id = "addTodoImg";
+	addTodoIcon.addEventListener("click", () => {
 		if (allProjects.length === 0) {
 			alert("Please create a project first, to store your todos in.");
 		} else if (getCurrentProject() === "All Todos") {
@@ -30,10 +34,12 @@ export function todoSection() {
 		}
 	});
 
-	todosDisplay.append(addTodo);
+	addTodoContainer.append(addTodoIcon);
+
+	topSection.append(projectTitle);
+	topSection.append(addTodoContainer);
 
 	todoMain.append(topSection);
-	todoMain.append(projectTitle);
 	todoMain.append(todosDisplay);
 
 	return todoMain;
@@ -72,7 +78,7 @@ export function renderTodos() {
 
 		let todoDate = document.createElement("p");
 		todoDate.classList.add("todo-date");
-		todoDate.innerText = todo.formatDate();
+		todoDate.innerText = " ~ " + todo.formatDate();
 
 		todoContainer.append(checkBox);
 		todoContainer.append(todoTitle);
@@ -111,8 +117,13 @@ export function renderAllTodos() {
 			todoTitle.innerText = todo.name;
 			todoTitle.elementName = todo.name;
 
+			let todoDate = document.createElement("p");
+			todoDate.classList.add("todo-date");
+			todoDate.innerText = " ~ " + todo.formatDate();
+
 			todoContainer.append(checkBox);
 			todoContainer.append(todoTitle);
+			todoContainer.append(todoDate);
 
 			let todosDisplay = document.getElementById("todosDisplay");
 			todosDisplay.append(todoContainer);

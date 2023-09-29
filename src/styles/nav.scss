@@ -1,11 +1,33 @@
 nav {
 	height: 100%;
 	width: 25%;
-	border-right: solid black 2px;
 	display: flex;
 	flex-direction: column;
+	box-shadow: 8px 0 10px -5px rgba(0, 0, 0, 0.2);
+	margin-right: 20px;
 }
 
 #topNav {
-	border-bottom: solid black 4px;
+	display: flex;
+	justify-content: space-between;
+	margin: 5px;
+}
+
+#projectNav {
+	padding-left: 6px;
+	width: 100%;
+}
+
+#addProject {
+	height: 22px;
+}
+
+#addProjectImg {
+	height: 100%;
+	opacity: 0.5;
+}
+
+.project-nav-item {
+	display: flex;
+	justify-content: space-between;
 }
