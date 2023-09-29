@@ -25,9 +25,18 @@ nav {
 #addProjectImg {
 	height: 100%;
 	opacity: 0.5;
+	transition: 0.5s ease;
+
+	&:hover {
+		opacity: 1;
+	}
 }
 
 .project-nav-item {
 	display: flex;
 	justify-content: space-between;
+}
+
+.project-nav-title {
+	cursor: grab;
 }

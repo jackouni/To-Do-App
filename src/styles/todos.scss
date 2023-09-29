@@ -17,6 +17,11 @@
 #addTodoImg {
 	height: 100%;
 	opacity: 0.5;
+	transition: 0.5s ease;
+
+	&:hover {
+		opacity: 1;
+	}
 }
 
 #projectTitle {
