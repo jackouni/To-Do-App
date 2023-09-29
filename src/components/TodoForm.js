@@ -58,6 +58,17 @@ function textareaInput(idName, nameAttr, row, col) {
 	return newTextarea;
 }
 
+function radioInput(idName, nameAttr, optionValue) {
+	const newRadioBtn = document.createElement("input");
+
+	newRadioBtn.type = "radio";
+	newRadioBtn.id = idName;
+	newRadioBtn.name = nameAttr;
+	newRadioBtn.value = optionValue;
+
+	return newRadioBtn;
+}
+
 function titleFieldset() {
 	// Reference Lines 3 ➡ 28
 	let titleField = fieldset("titleFieldset");
@@ -90,6 +101,33 @@ function descFieldset() {
 	descField.append(descTextarea);
 
 	return descField;
+}
+
+function radioFieldset() {
+	let radioField = fieldset("radioFieldset");
+
+	let radioTitle = document.createElement("h3");
+	radioTitle.innerText = "Choose Priority:";
+
+	let radioLow = radioInput("low-priority", "priority", "low");
+	let labelLow = label("Low", "low-priority");
+	radioLow.checked = true;
+
+	let radioMid = radioInput("mid-priority", "priority", "mid");
+	let labelMid = label("Mid", "mid-priority");
+
+	let radioHigh = radioInput("high-priority", "priority", "high");
+	let labelHigh = label("High", "high-priority");
+
+	radioField.append(radioTitle);
+	radioField.append(radioLow);
+	radioField.append(labelLow);
+	radioField.append(radioMid);
+	radioField.append(labelMid);
+	radioField.append(radioHigh);
+	radioField.append(labelHigh);
+
+	return radioField;
 }
 
 function submitBtn() {
@@ -136,6 +174,7 @@ export function todoForm() {
 	form.append(titleFieldset());
 	form.append(dateFieldset());
 	form.append(descFieldset());
+	form.append(radioFieldset());
 	form.append(btnsContainer());
 
 	form.addEventListener("submit", (event) => {

@@ -16,12 +16,13 @@ form {
 	align-self: center;
 }
 
-fieldset {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+#projectForm {
+	fieldset {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
-
 #btnContainer {
 	display: flex;
 	justify-content: center;

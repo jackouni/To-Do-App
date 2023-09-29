@@ -6,6 +6,7 @@ import "./styles/nav.scss";
 import "./styles/main.scss";
 import "./styles/todos.scss";
 import "./styles/project.scss";
+import "./styles/todoForm.scss";
 
 import { header } from "./components/Header";
 import { main } from "./components/Main";

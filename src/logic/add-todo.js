@@ -7,9 +7,10 @@ function addTodo() {
 	let todoTitle = document.getElementById("title").value;
 	let dateInput = document.getElementById("date").value;
 	let descInput = document.getElementById("desc").value;
+	let priorityInput = document.querySelector('input[type="radio"]:checked').value;
 
+	todoFactory(todoTitle, dateInput, descInput, priorityInput);
 	form.remove();
-	todoFactory(todoTitle, dateInput, descInput);
 	renderTodos();
 }
 

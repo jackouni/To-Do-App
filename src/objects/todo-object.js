@@ -1,7 +1,7 @@
 import { parse, format } from "date-fns";
 import { getCurrentProject } from "../logic/project-nav";
 
-export function todoFactory(name, due, desc) {
+export function todoFactory(name, due, desc, priority) {
 	let projectName = getCurrentProject().name;
 
 	let newTodo = {
@@ -9,6 +9,7 @@ export function todoFactory(name, due, desc) {
 		due,
 		desc,
 		projectName,
+		priority,
 		formatDate: function () {
 			let parsedDate = parse(this.due, "yyyy-MM-dd", new Date());
 			let formattedDate = format(parsedDate, "MMM do, yyyy");
@@ -21,7 +22,9 @@ export function todoFactory(name, due, desc) {
 			newTodo.name
 		}" \nnewTodo due date === ${newTodo.formatDate()}\nnewTodo description === "${
 			newTodo.desc
-		}"\nnewTodo.projectName === "${newTodo.projectName}"`
+		}"\nnewTodo.projectName === "${newTodo.projectName}"\n newTodo.priority === ${
+			newTodo.priority
+		}`
 	);
 
 	getCurrentProject().todos.push(newTodo);
