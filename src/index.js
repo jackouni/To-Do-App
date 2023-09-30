@@ -1,5 +1,6 @@
 import "./styles/content.scss";
 import "./styles/css-reset.css";
+import "./styles/form.scss";
 import "./styles/projectForm.scss";
 import "./styles/header.scss";
 import "./styles/nav.scss";

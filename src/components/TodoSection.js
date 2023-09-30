@@ -78,7 +78,7 @@ export function renderTodos() {
 
 		let todoDate = document.createElement("p");
 		todoDate.classList.add("todo-date");
-		todoDate.innerText = " ~ " + todo.formatDate();
+		todoDate.innerText = todo.formatDate();
 
 		todoContainer.append(checkBox);
 		todoContainer.append(todoTitle);

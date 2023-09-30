@@ -1,33 +1,5 @@
-form {
-	display: flex;
-	flex-direction: column;
-
-	height: 50%;
-	width: 50%;
-
-	position: absolute;
-	left: 20%;
-	bottom: 20%;
-	background-color: aliceblue;
-	border: solid black 2px;
-}
-
 .formTitle {
 	align-self: center;
-}
-
-#projectForm {
-	fieldset {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-}
-#btnContainer {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: 20px;
 }
 
 #submitBtn {

@@ -1,4 +1,3 @@
-import { parse, format } from "date-fns";
 import { addTodo } from "../logic/add-todo";
 import { isDuplicatedTodoName, isProjectFormActive } from "../logic/form-validation";
 
@@ -156,8 +155,7 @@ function cancelBtn() {
 
 function btnsContainer() {
 	let btnContainer = document.createElement("div");
-	btnContainer.id = "btnsContainer";
-
+	btnContainer.classList.add("btns-container");
 	btnContainer.append(submitBtn());
 	btnContainer.append(cancelBtn());
 
