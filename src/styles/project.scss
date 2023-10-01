@@ -4,11 +4,11 @@
 	display: flex;
 }
 
-.delete-icon {
+.icon-container {
+	display: flex;
 	height: 100%;
 }
 
-.delete-img {
-	margin-top: 1%;
-	height: 90%;
+.icon {
+	height: 100%;
 }

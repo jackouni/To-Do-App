@@ -2,6 +2,7 @@ import { projectForm } from "./projectForm";
 import { allProjects } from "../objects/project-object";
 import { setCurrentProject } from "../logic/project-nav";
 import deleteImg from "../assets/imgs/delete-project-icon.png";
+import editImg from "../assets/imgs/edit-project-icon.png";
 import addProjectImg from "../assets/imgs/add-project-icon.png";
 import { removeProject } from "../logic/remove-project";
 
@@ -108,15 +109,22 @@ export function renderProjectElements() {
 
 		// Icon container that will hold delete and edit icons.
 		let iconContainer = document.createElement("div");
-		iconContainer.classList.add("delete-container");
+		iconContainer.classList.add("icon-container");
 
 		let deleteIcon = new Image();
 		deleteIcon.src = deleteImg;
-		deleteIcon.classList.add("delete-img");
+		deleteIcon.classList.add("icon");
 		deleteIcon.projectElement = project.name;
 		deleteIcon.addEventListener("click", (event) => removeProject(event));
 
+		let editIcon = new Image();
+		editIcon.src = editImg;
+		editIcon.classList.add("icon");
+		editIcon.projectElement = project.name;
+		editIcon.addEventListener("click", (event) => removeProject(event));
+
 		iconContainer.appendChild(deleteIcon);
+		iconContainer.append(editIcon);
 		newProjectContainer.append(iconContainer);
 
 		const projectNavSection = document.getElementById("projectNavSection");
