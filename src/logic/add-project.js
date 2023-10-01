@@ -1,5 +1,5 @@
 import { projectFactory } from "../objects/project-object";
-import { renderProjects } from "../components/Nav";
+import { renderProjectElements } from "../components/Nav";
 import { setCurrentProject } from "./project-nav";
 import { renderProjectTitle, renderTodos } from "../components/TodoSection";
 
@@ -10,7 +10,7 @@ function addProject() {
 
 	form.remove();
 	projectFactory(projectTitle);
-	renderProjects();
+	renderProjectElements();
 	setCurrentProject(projectTitle);
 	renderProjectTitle();
 	renderTodos();

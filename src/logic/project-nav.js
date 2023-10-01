@@ -11,7 +11,7 @@ let userState = {
 // Event listener to set current Project
 export function setCurrentProject(event) {
 	if (event instanceof Event) {
-		userState.currentProject = event.target.elementName;
+		userState.currentProject = event.target.projectElement;
 		renderProjectTitle();
 		renderTodos();
 		console.log("User is now in:", userState.currentProject);
