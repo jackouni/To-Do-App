@@ -63,18 +63,22 @@ export function renderTodos() {
 	projectTodos.forEach((todo) => {
 		let todoContainer = document.createElement("div");
 		todoContainer.classList.add("todo-item");
-		todoContainer.elementName = todo.name;
+		todoContainer.todoElement = todo.name;
 
 		let checkBox = document.createElement("button");
 		checkBox.classList.add("checkbox");
-		checkBox.elementName = todo.name;
-		checkBox.project = todo.projectName;
-		checkBox.addEventListener("click", (event) => removeTodo(event));
+		checkBox.todoElement = todo.name;
+		checkBox.projectElement = todo.projectName;
+		checkBox.addEventListener("click", (event) => {
+			let todoName = event.target.todoElement;
+			removeTodo(event);
+			removeTodoElement(todoName);
+		});
 
 		let todoTitle = document.createElement("h4");
 		todoTitle.classList.add("todo-title");
 		todoTitle.innerText = todo.name;
-		todoTitle.elementName = todo.name;
+		todoTitle.todoElement = todo.name;
 
 		let todoDate = document.createElement("p");
 		todoDate.classList.add("todo-date");
@@ -104,18 +108,22 @@ export function renderAllTodos() {
 		projectTodos.forEach((todo) => {
 			let todoContainer = document.createElement("div");
 			todoContainer.classList.add("todo-item");
-			todoContainer.elementName = todo.name;
+			todoContainer.todoElement = todo.name;
 
 			let checkBox = document.createElement("button");
 			checkBox.classList.add("checkbox");
-			checkBox.elementName = todo.name;
-			checkBox.project = todo.projectName;
-			checkBox.addEventListener("click", (event) => removeTodo(event));
+			checkBox.todoElement = todo.name;
+			checkBox.projectElement = todo.projectName;
+			checkBox.addEventListener("click", (event) => {
+				let todoToRemove = event.target.todoElement;
+				removeTodo(event);
+				removeTodoElement(todoToRemove);
+			});
 
 			let todoTitle = document.createElement("h4");
 			todoTitle.classList.add("todo-title");
 			todoTitle.innerText = todo.name;
-			todoTitle.elementName = todo.name;
+			todoTitle.todoElement = todo.name;
 
 			let todoDate = document.createElement("p");
 			todoDate.classList.add("todo-date");
@@ -137,7 +145,7 @@ export function removeTodoElement(todoName) {
 	let allTodoElements = document.querySelectorAll(".todo-item");
 
 	allTodoElements.forEach((element) => {
-		if (element.elementName === todoName) {
+		if (element.todoElement === todoName) {
 			element.remove();
 		}
 	});

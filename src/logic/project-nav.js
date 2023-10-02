@@ -44,3 +44,8 @@ export function getProjectIndex(projectName) {
 
 	return index;
 }
+
+export function getProject(projectName) {
+	let projectObject = allProjects.find((project) => project.name === projectName);
+	return projectObject;
+}
