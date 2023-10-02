@@ -1,11 +1,8 @@
 import { allProjects } from "../objects/project-object";
-import { removeProjectElement } from "../components/Nav";
 import { getProjectIndex } from "./project-nav";
 
-export function removeProject(event) {
+export function removeProject(projectName) {
 	console.log(`removeProject(event) invoked`);
-
-	let projectName = event.target.projectElement;
 
 	let index = getProjectIndex(projectName);
 
@@ -14,6 +11,4 @@ export function removeProject(event) {
 	console.log(
 		`allProjects spliced at index, ${index}. \nUpdated allProjects array: ${allProjects} `
 	);
-
-	removeProjectElement(projectName);
 }

@@ -8,6 +8,7 @@ import "./styles/main.scss";
 import "./styles/todos.scss";
 import "./styles/project.scss";
 import "./styles/todoForm.scss";
+import "./styles/inline-edit.scss";
 
 import { header } from "./components/Header";
 import { main } from "./components/Main";

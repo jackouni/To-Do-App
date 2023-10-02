@@ -5,6 +5,7 @@ import deleteImg from "../assets/imgs/delete-project-icon.png";
 import editImg from "../assets/imgs/edit-project-icon.png";
 import addProjectImg from "../assets/imgs/add-project-icon.png";
 import { removeProject } from "../logic/remove-project";
+import { renderInlineEditing } from "./EditProject";
 
 // The top section of the Nav. Will be used to display the 'All Todos' option
 function renderTopNavSection() {
@@ -115,13 +116,20 @@ export function renderProjectElements() {
 		deleteIcon.src = deleteImg;
 		deleteIcon.classList.add("icon");
 		deleteIcon.projectElement = project.name;
-		deleteIcon.addEventListener("click", (event) => removeProject(event));
+		deleteIcon.addEventListener("click", (event) => {
+			const projectName = event.target.projectElement;
+			removeProject(projectName);
+			removeProjectElement(projectName);
+		});
 
 		let editIcon = new Image();
 		editIcon.src = editImg;
 		editIcon.classList.add("icon");
 		editIcon.projectElement = project.name;
-		editIcon.addEventListener("click", (event) => removeProject(event));
+		editIcon.addEventListener("click", (event) => {
+			const projectName = event.target.projectElement;
+			renderInlineEditing(projectName);
+		});
 
 		iconContainer.appendChild(deleteIcon);
 		iconContainer.append(editIcon);
