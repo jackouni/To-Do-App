@@ -2,7 +2,6 @@ import { renderProjectElements } from "./Nav";
 import { renderAllTodos, renderTodos } from "./TodoSection";
 import cancelImg from "../assets/imgs/cancel-icon.png";
 import confirmImg from "../assets/imgs/confirm-icon.png";
-import { getCurrentProject } from "../logic/project-nav";
 import { editProject } from "../logic/edit-project";
 
 export function renderInlineEditing(projectName) {
@@ -37,7 +36,7 @@ export function renderInlineEditing(projectName) {
 	let cancelIcon = new Image();
 	cancelIcon.src = cancelImg;
 	cancelIcon.classList.add("icon");
-	cancelIcon.addEventListener("click", (event) => {
+	cancelIcon.addEventListener("click", () => {
 		selectedProjectElement.remove();
 		renderProjectElements();
 		renderTodos();
@@ -46,10 +45,10 @@ export function renderInlineEditing(projectName) {
 	let confirmIcon = new Image();
 	confirmIcon.src = confirmImg;
 	confirmIcon.classList.add("icon");
-	confirmIcon.addEventListener("click", (event) => {
+	confirmIcon.addEventListener("click", () => {
 		let newProjectName = span.textContent;
 		selectedProjectElement.remove();
-		editProject(newProjectName);
+		editProject(projectName, newProjectName);
 	});
 
 	iconContainer.appendChild(cancelIcon);

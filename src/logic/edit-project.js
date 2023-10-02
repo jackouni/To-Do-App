@@ -1,16 +1,16 @@
 import { renderProjectElements } from "../components/Nav";
-import { renderProjectTitle } from "../components/TodoSection";
-import { getCurrentProject, setCurrentProject } from "./project-nav";
+import { renderProjectTitle, renderTodos } from "../components/TodoSection";
+import { getCurrentProject, getProject, setCurrentProject } from "./project-nav";
 
-export function editProject(newProjectName) {
+export function editProject(selectedProjectName, newProjectName) {
 	console.log(`editProject(${newProjectName}) invoked`);
 
-	let projectEdit = getCurrentProject();
-	projectEdit.name = newProjectName;
+	let project = getProject(selectedProjectName);
+	project.name = newProjectName;
 
-	let projectTodos = projectEdit.todos;
+	let projectTodos = project.todos;
 
-	projectTodos.forEach((todo) => (todo.project = newProjectName));
+	projectTodos.forEach((todo) => (todo.projectName = newProjectName));
 
 	setCurrentProject(newProjectName);
 	renderProjectTitle();

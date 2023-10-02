@@ -14,7 +14,7 @@ export function removeTodo(event) {
 	let projectTodos = project.todos;
 	let todoIndex = projectTodos.findIndex((todo) => todo.name === todoName);
 
-	// Remove Todo from Project (remove from project's todos array property).
+	// Remove todo from project (remove todo from project's 'todos' array property).
 	projectTodos.splice(todoIndex, 1);
 
 	// Debugging console.log message.
