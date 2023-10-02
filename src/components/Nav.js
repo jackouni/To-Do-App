@@ -84,7 +84,7 @@ export function renderProjectElements() {
 
 	// Clears all project-nav-item elements from the projectNavSection.
 	// This is done so that these elements can be re-rendered without repeating.
-	removeAllProjectElements();
+	removeAllProjectElements(); //sadasd
 
 	// Loops through each project in 'allProjects' array and renders them to the projectNavSection
 	for (let i = 0; i < allProjects.length; i++) {

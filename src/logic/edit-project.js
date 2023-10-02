@@ -1,4 +1,4 @@
-import { getProject, setCurrentProject } from "./project-nav";
+import { getProject } from "./project-nav";
 
 export function editProject(selectedProjectName, newProjectName) {
 	console.log(`editProject(${newProjectName}) invoked`);
@@ -9,6 +9,4 @@ export function editProject(selectedProjectName, newProjectName) {
 	let projectTodos = project.todos;
 
 	projectTodos.forEach((todo) => (todo.projectName = newProjectName));
-
-	setCurrentProject(newProjectName);
 }

@@ -30,6 +30,21 @@ export function renderInlineEditing(projectName) {
 	span.contentEditable = true;
 	selectedProjectElement.append(span);
 
+	span.addEventListener("keydown", function (event) {
+		// Check if the pressed key is the Enter key
+		if (event.key === "Enter" || event.code === "Enter") {
+			let newProjectName = span.textContent;
+
+			selectedProjectElement.remove();
+
+			editProject(projectName, newProjectName);
+			setCurrentProject(newProjectName);
+			renderProjectTitle();
+			renderProjectElements();
+			renderTodos();
+		}
+	});
+
 	// Icon container that will hold 'cancel' and 'confirm' icons.
 	let iconContainer = document.createElement("div");
 	iconContainer.classList.add("icon-container");
@@ -48,7 +63,9 @@ export function renderInlineEditing(projectName) {
 	confirmIcon.classList.add("icon");
 	confirmIcon.addEventListener("click", () => {
 		let newProjectName = span.textContent;
+
 		selectedProjectElement.remove();
+
 		editProject(projectName, newProjectName);
 		setCurrentProject(newProjectName);
 		renderProjectTitle();

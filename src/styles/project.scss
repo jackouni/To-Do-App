@@ -1,7 +1,14 @@
 .project-nav-item {
-	width: 100%;
+	width: 80%;
 	height: 20px;
 	display: flex;
+}
+
+.project-nav-title {
+	flex-basis: 78px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .icon-container {
