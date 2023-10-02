@@ -1,8 +1,9 @@
 import { renderProjectElements } from "./Nav";
-import { renderAllTodos, renderTodos } from "./TodoSection";
+import { renderTodos, renderProjectTitle } from "./TodoSection";
 import cancelImg from "../assets/imgs/cancel-icon.png";
 import confirmImg from "../assets/imgs/confirm-icon.png";
 import { editProject } from "../logic/edit-project";
+import { setCurrentProject } from "../logic/project-nav";
 
 export function renderInlineEditing(projectName) {
 	console.log(`renderInlineEditing("${projectName}") invoked`);
@@ -49,6 +50,10 @@ export function renderInlineEditing(projectName) {
 		let newProjectName = span.textContent;
 		selectedProjectElement.remove();
 		editProject(projectName, newProjectName);
+		setCurrentProject(newProjectName);
+		renderProjectTitle();
+		renderProjectElements();
+		renderTodos();
 	});
 
 	iconContainer.appendChild(cancelIcon);
