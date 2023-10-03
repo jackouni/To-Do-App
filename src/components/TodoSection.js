@@ -67,6 +67,8 @@ export function renderTodos() {
 
 		let checkBox = document.createElement("button");
 		checkBox.classList.add("checkbox");
+		// Used to add a styling based on 'priority' of the todo
+		checkBox.classList.add(`checkbox-${todo.priority}`);
 		checkBox.todoElement = todo.name;
 		checkBox.projectElement = todo.projectName;
 		checkBox.addEventListener("click", (event) => {
@@ -77,6 +79,8 @@ export function renderTodos() {
 
 		let todoTitle = document.createElement("h4");
 		todoTitle.classList.add("todo-title");
+		// Used to add a styling based on 'priority' of the todo
+		todoTitle.classList.add(`title-${todo.priority}`);
 		todoTitle.innerText = todo.name;
 		todoTitle.todoElement = todo.name;
 

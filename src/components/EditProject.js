@@ -1,9 +1,9 @@
 import { renderProjectElements } from "./Nav";
-import { renderTodos, renderProjectTitle } from "./TodoSection";
+import { renderTodos, renderProjectTitle, renderAllTodos } from "./TodoSection";
 import cancelImg from "../assets/imgs/cancel-icon.png";
 import confirmImg from "../assets/imgs/confirm-icon.png";
 import { editProject } from "../logic/edit-project";
-import { setCurrentProject } from "../logic/project-nav";
+import { setCurrentProject, getCurrentProject } from "../logic/project-nav";
 import { addSelectedClassTo } from "./Nav";
 
 export function renderInlineEditing(projectName) {
@@ -41,7 +41,7 @@ export function renderInlineEditing(projectName) {
 	cancelIcon.addEventListener("click", () => {
 		selectedProjectElement.remove();
 		renderProjectElements();
-		renderTodos();
+		getCurrentProject() === "All Todos" ? renderAllTodos() : renderTodos();
 	});
 
 	let confirmIcon = new Image();

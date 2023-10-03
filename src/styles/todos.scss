@@ -40,10 +40,19 @@
 }
 
 .checkbox {
-	margin-top: 5px;
 	height: 50%;
-	border: solid black 2px;
+	border: solid black 1px;
 	border-radius: 50%;
+}
+
+.checkbox-mid {
+	border: solid orange 1px;
+	background-color: rgba(255, 166, 0, 0.25);
+}
+
+.checkbox-high {
+	border: solid red 1px;
+	background-color: rgba(255, 0, 0, 0.33);
 }
 
 #todosDisplay {
@@ -56,6 +65,32 @@
 
 .todo-title {
 	margin-left: 10px;
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.title-mid {
+	&::before {
+		font-style: normal;
+		font-size: 14px;
+		font-weight: 800;
+		content: "!";
+		margin-right: 10px;
+	}
+}
+
+.title-high {
+	font-weight: 900;
+
+	font-style: italic;
+
+	&::before {
+		font-style: normal;
+		font-weight: 800;
+		font-size: 14px;
+		content: "!!";
+		margin-right: 10px;
+	}
 }
 
 .todo-date {
