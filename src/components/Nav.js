@@ -1,6 +1,6 @@
 import { projectForm } from "./projectForm";
 import { allProjects } from "../objects/project-object";
-import { setCurrentProject } from "../logic/project-nav";
+import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
 import deleteImg from "../assets/imgs/delete-project-icon.png";
 import editImg from "../assets/imgs/edit-project-icon.png";
 import addProjectImg from "../assets/imgs/add-project-icon.png";
@@ -38,15 +38,17 @@ function renderTopNavSection() {
 function renderAllTodos() {
 	// 'All Todos' Nav Option
 	const allTodos = document.createElement("div");
-	allTodos.classList.add("project-nav-title");
 	allTodos.id = "allTodos";
 	allTodos.projectElement = "All Todos";
 	allTodos.addEventListener("click", () => {
 		setCurrentProject("All Todos");
+		addSelectedClassTo("All Todos");
 	});
 
 	const allTodosTitle = document.createElement("h3");
-	allTodosTitle.classList.add("nav-title");
+	allTodosTitle.id = `projectTitle-AllTodos`;
+	allTodosTitle.classList.add("project-nav-title");
+	allTodosTitle.classList.add("selected-project");
 	allTodosTitle.innerText = "All Todos";
 	allTodos.append(allTodosTitle);
 
@@ -78,13 +80,12 @@ function removeAllProjectElements() {
 }
 
 // Renders the Project Nav Elements in the projectNavSection.
-// Reference lines 51 ➡️ 57
 export function renderProjectElements() {
 	console.log("renderProjects() invoked");
 
 	// Clears all project-nav-item elements from the projectNavSection.
 	// This is done so that these elements can be re-rendered without repeating.
-	removeAllProjectElements(); //sadasd
+	removeAllProjectElements();
 
 	// Loops through each project in 'allProjects' array and renders them to the projectNavSection
 	for (let i = 0; i < allProjects.length; i++) {
@@ -100,11 +101,14 @@ export function renderProjectElements() {
 
 		// Title of the project in nav
 		let newProjectTitle = document.createElement("h4");
+		// This id will be used to target the title and style it for when it is selected/clicked on.
+		newProjectTitle.id = `projectTitle-${removeSpacesFrom(project.name)}`;
 		newProjectTitle.classList.add("project-nav-title");
 		newProjectTitle.projectElement = project.name;
 		newProjectTitle.innerText = project.name;
 		newProjectTitle.addEventListener("click", (event) => {
 			setCurrentProject(event);
+			addSelectedClassTo(event.target.projectElement);
 		});
 		newProjectContainer.append(newProjectTitle);
 
@@ -151,4 +155,29 @@ export function removeProjectElement(projectName) {
 			setCurrentProject("All Todos");
 		}
 	});
+}
+
+function removeSpacesFrom(string) {
+	console.log(`removeSpacesFrom(${string}) invoked`);
+
+	let newString = string.replace(/\s+/g, "");
+
+	console.log(`${string} converted to ➡️ ${newString}`);
+
+	return newString;
+}
+
+export function addSelectedClassTo(projectElement) {
+	const selectedElement = document.getElementById(
+		`projectTitle-${removeSpacesFrom(projectElement)}`
+	);
+
+	let allProjectTitles = document.querySelectorAll(".project-nav-title");
+	let allProjectTitlesArray = Array.from(allProjectTitles);
+
+	allProjectTitlesArray.forEach((title) =>
+		title.classList.remove("selected-project")
+	);
+
+	selectedElement.classList.add("selected-project");
 }

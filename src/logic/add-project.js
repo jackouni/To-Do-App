@@ -2,6 +2,7 @@ import { projectFactory } from "../objects/project-object";
 import { renderProjectElements } from "../components/Nav";
 import { setCurrentProject } from "./project-nav";
 import { renderProjectTitle, renderTodos } from "../components/TodoSection";
+import { addSelectedClassTo } from "../components/Nav";
 
 function addProject() {
 	console.log("addProject() invoked");
@@ -14,6 +15,7 @@ function addProject() {
 	setCurrentProject(projectTitle);
 	renderProjectTitle();
 	renderTodos();
+	addSelectedClassTo(projectTitle);
 }
 
 export { addProject };

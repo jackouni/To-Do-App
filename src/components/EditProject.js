@@ -4,6 +4,7 @@ import cancelImg from "../assets/imgs/cancel-icon.png";
 import confirmImg from "../assets/imgs/confirm-icon.png";
 import { editProject } from "../logic/edit-project";
 import { setCurrentProject } from "../logic/project-nav";
+import { addSelectedClassTo } from "./Nav";
 
 export function renderInlineEditing(projectName) {
 	console.log(`renderInlineEditing("${projectName}") invoked`);
@@ -29,21 +30,6 @@ export function renderInlineEditing(projectName) {
 	span.textContent = projectName;
 	span.contentEditable = true;
 	selectedProjectElement.append(span);
-
-	span.addEventListener("keydown", function (event) {
-		// Check if the pressed key is the Enter key
-		if (event.key === "Enter" || event.code === "Enter") {
-			let newProjectName = span.textContent;
-
-			selectedProjectElement.remove();
-
-			editProject(projectName, newProjectName);
-			setCurrentProject(newProjectName);
-			renderProjectTitle();
-			renderProjectElements();
-			renderTodos();
-		}
-	});
 
 	// Icon container that will hold 'cancel' and 'confirm' icons.
 	let iconContainer = document.createElement("div");
@@ -71,6 +57,23 @@ export function renderInlineEditing(projectName) {
 		renderProjectTitle();
 		renderProjectElements();
 		renderTodos();
+		addSelectedClassTo(newProjectName);
+	});
+
+	span.addEventListener("keydown", function (event) {
+		// Check if the pressed key is the Enter key
+		if (event.key === "Enter" || event.code === "Enter") {
+			let newProjectName = span.textContent;
+
+			selectedProjectElement.remove();
+
+			editProject(projectName, newProjectName);
+			setCurrentProject(newProjectName);
+			renderProjectTitle();
+			renderProjectElements();
+			renderTodos();
+			addSelectedClassTo(newProjectName);
+		}
 	});
 
 	iconContainer.appendChild(cancelIcon);

@@ -1,5 +1,6 @@
 import { addProject } from "../logic/add-project";
 import { isDuplicatedProjectName, isTodoFormActive } from "../logic/form-validation";
+import { addSelectedClassTo } from "../components/Nav";
 
 function formTitle() {
 	let newTitle = document.createElement("h2");
@@ -101,6 +102,7 @@ export function projectForm() {
 			);
 		} else {
 			addProject();
+			addSelectedClassTo();
 		}
 	});
 
