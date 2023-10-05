@@ -3,6 +3,7 @@ import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
 import { allProjects } from "../objects/project-object";
 import { removeTodo } from "../logic/remove-todo";
 import addTodoImg from "../assets/imgs/add-task-icon.png";
+import { animateDropDown } from "../logic/todo-dropdown";
 
 export function todoSection() {
 	const todoMain = document.createElement("div");
@@ -64,6 +65,8 @@ export function renderTodos() {
 		let todoContainer = document.createElement("div");
 		todoContainer.classList.add("todo-item");
 		todoContainer.todoElement = todo.name;
+		todoContainer.projectElement = todo.projectName;
+		todoContainer.addEventListener("click", (event) => animateDropDown(event));
 
 		let checkBox = document.createElement("button");
 		checkBox.classList.add("checkbox");
@@ -88,9 +91,26 @@ export function renderTodos() {
 		todoDate.classList.add("todo-date");
 		todoDate.innerText = todo.formatDate();
 
+		let dropDown = document.createElement("div");
+		dropDown.id = `dropdown-${todo.name}`;
+		dropDown.classList.add("dropdown");
+
+		let description = document.createElement("p");
+		description.id = `description-${todo.name}`;
+		description.classList.add("description");
+		description.innerText = `Description: \n ${todo.desc}`;
+
+		let priority = document.createElement("h4");
+		priority.id = `priorityTitle-${todo.name}`;
+		priority.classList.add(`priority-title-${todo.priority}`);
+		priority.innerText = `Priority: ${todo.priority}`;
+
+		dropDown.append(description);
+
 		todoContainer.append(checkBox);
 		todoContainer.append(todoTitle);
 		todoContainer.append(todoDate);
+		todoContainer.append(dropDown);
 
 		let todosDisplay = document.getElementById("todosDisplay");
 		todosDisplay.append(todoContainer);
@@ -116,6 +136,8 @@ export function renderAllTodos() {
 
 			let checkBox = document.createElement("button");
 			checkBox.classList.add("checkbox");
+			// Used to add a styling based on 'priority' of the todo
+			checkBox.classList.add(`checkbox-${todo.priority}`);
 			checkBox.todoElement = todo.name;
 			checkBox.projectElement = todo.projectName;
 			checkBox.addEventListener("click", (event) => {
@@ -126,12 +148,14 @@ export function renderAllTodos() {
 
 			let todoTitle = document.createElement("h4");
 			todoTitle.classList.add("todo-title");
+			// Used to add a styling based on 'priority' of the todo
+			todoTitle.classList.add(`title-${todo.priority}`);
 			todoTitle.innerText = todo.name;
 			todoTitle.todoElement = todo.name;
 
 			let todoDate = document.createElement("p");
 			todoDate.classList.add("todo-date");
-			todoDate.innerText = " ~ " + todo.formatDate();
+			todoDate.innerText = todo.formatDate();
 
 			todoContainer.append(checkBox);
 			todoContainer.append(todoTitle);

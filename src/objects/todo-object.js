@@ -14,7 +14,7 @@ export function todoFactory(name, due, desc, priority) {
 			if (this.due) {
 				let parsedDate = parse(this.due, "yyyy-MM-dd", new Date());
 				let formattedDate = format(parsedDate, "MMM do, yyyy");
-				return `~ ${formattedDate}`;
+				return `${formattedDate}`;
 			} else {
 				return " ";
 			}
