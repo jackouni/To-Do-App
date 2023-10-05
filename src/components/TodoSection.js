@@ -3,6 +3,7 @@ import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
 import { allProjects } from "../objects/project-object";
 import { removeTodo } from "../logic/remove-todo";
 import addTodoImg from "../assets/imgs/add-task-icon.png";
+import editTodoImg from "../assets/imgs/edit-todo-icon.png";
 import { toggleDropDown } from "../logic/todo-dropdown";
 
 export function todoSection() {
@@ -61,6 +62,7 @@ export function renderTodos() {
 	let todoElements = document.querySelectorAll(".todo-item");
 	todoElements.forEach((element) => element.remove());
 
+	// This will render each todo from a project
 	projectTodos.forEach((todo) => {
 		let todoContainer = document.createElement("div");
 		todoContainer.classList.add("todo-item");
@@ -70,7 +72,7 @@ export function renderTodos() {
 
 		let checkBox = document.createElement("button");
 		checkBox.classList.add("checkbox");
-		// Used to add a styling based on 'priority' of the todo
+		// Used to add a styling to a checkbox based on 'priority' of the todo
 		checkBox.classList.add(`checkbox-${todo.priority}`);
 		checkBox.todoElement = todo.name;
 		checkBox.projectElement = todo.projectName;
@@ -82,7 +84,7 @@ export function renderTodos() {
 
 		let todoTitle = document.createElement("h4");
 		todoTitle.classList.add("todo-title");
-		// Used to add a styling based on 'priority' of the todo
+		// Used to add a styling to the todo-title based on 'priority' of the todo
 		todoTitle.classList.add(`title-${todo.priority}`);
 		todoTitle.innerText = todo.name;
 		todoTitle.todoElement = todo.name;
@@ -90,7 +92,21 @@ export function renderTodos() {
 		let todoDate = document.createElement("p");
 		todoDate.classList.add("todo-date");
 		todoDate.innerText = todo.formatDate();
+		todoDate.todoElement = todo.name;
 
+		const editTodoContainer = document.createElement("div");
+		editTodoContainer.classList.add("edit-todo");
+
+		let editTodoIcon = new Image();
+		editTodoIcon.src = editTodoImg;
+		editTodoIcon.id = `editTodo-${todo.name}`;
+		editTodoIcon.classList.add("edit-todo-icon");
+		editTodoIcon.addEventListener("click", () => console.log("edit"));
+		todoDate.todoElement = todo.name;
+
+		editTodoContainer.append(editTodoIcon);
+
+		// Dropdown menu that displays description
 		let dropDown = document.createElement("div");
 		dropDown.id = `dropdown-${todo.name}`;
 		dropDown.classList.add("dropdown");
@@ -110,6 +126,7 @@ export function renderTodos() {
 		todoContainer.append(checkBox);
 		todoContainer.append(todoTitle);
 		todoContainer.append(todoDate);
+		todoContainer.append(editTodoContainer);
 		todoContainer.append(dropDown);
 
 		let todosDisplay = document.getElementById("todosDisplay");
