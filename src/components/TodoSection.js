@@ -3,7 +3,7 @@ import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
 import { allProjects } from "../objects/project-object";
 import { removeTodo } from "../logic/remove-todo";
 import addTodoImg from "../assets/imgs/add-task-icon.png";
-import { animateDropDown } from "../logic/todo-dropdown";
+import { toggleDropDown } from "../logic/todo-dropdown";
 
 export function todoSection() {
 	const todoMain = document.createElement("div");
@@ -66,7 +66,7 @@ export function renderTodos() {
 		todoContainer.classList.add("todo-item");
 		todoContainer.todoElement = todo.name;
 		todoContainer.projectElement = todo.projectName;
-		todoContainer.addEventListener("click", (event) => animateDropDown(event));
+		todoContainer.addEventListener("click", (event) => toggleDropDown(event));
 
 		let checkBox = document.createElement("button");
 		checkBox.classList.add("checkbox");

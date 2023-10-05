@@ -1,4 +1,4 @@
-export function animateDropDown(event) {
+export function toggleDropDown(event) {
 	console.log(`animateDropDown(${event.target}) invoked`);
 	if (!event.target.classList.contains("checkbox")) {
 		let todoName = event.target.todoElement;
