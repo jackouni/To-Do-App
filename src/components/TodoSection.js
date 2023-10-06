@@ -5,6 +5,7 @@ import { removeTodo } from "../logic/remove-todo";
 import addTodoImg from "../assets/imgs/add-task-icon.png";
 import editTodoImg from "../assets/imgs/edit-todo-icon.png";
 import { toggleDropDown } from "../logic/todo-dropdown";
+import { todoEditForm } from "./TodoEditForm";
 
 export function todoSection() {
 	const todoMain = document.createElement("div");
@@ -101,8 +102,11 @@ export function renderTodos() {
 		editTodoIcon.src = editTodoImg;
 		editTodoIcon.id = `editTodo-${todo.name}`;
 		editTodoIcon.classList.add("edit-todo-icon");
-		editTodoIcon.addEventListener("click", () => console.log("edit"));
-		todoDate.todoElement = todo.name;
+		editTodoIcon.todoElement = todo.name;
+		editTodoIcon.projectElement = todo.projectName;
+		editTodoIcon.addEventListener("click", (event) => {
+			content.append(todoEditForm(event));
+		});
 
 		editTodoContainer.append(editTodoIcon);
 

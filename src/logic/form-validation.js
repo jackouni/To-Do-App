@@ -15,7 +15,6 @@ export function isDuplicatedProjectName() {
 
 export function isDuplicatedTodoName() {
 	console.log("projectValidation() invoked");
-	let form = document.getElementById("projectForm");
 	let todoTitle = document.getElementById("title").value;
 
 	let currentProject = getCurrentProject();
