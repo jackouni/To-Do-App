@@ -13,7 +13,14 @@ import "./styles/inline-edit.scss";
 import { header } from "./components/Header";
 import { main } from "./components/Main";
 
+import { renderProjectTitle } from "./components/TodoSection";
+import { renderAllTodos } from "./components/TodoSection";
+import { renderProjectElements } from "./components/Nav";
+
 const content = document.getElementById("content");
 
 content.append(header());
 content.append(main());
+renderProjectElements();
+renderProjectTitle();
+renderAllTodos();

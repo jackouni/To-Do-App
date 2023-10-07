@@ -1,6 +1,7 @@
-import { getTodo } from "./todo-nav";
-import { getProject } from "./project-nav";
+import { getTodoIndex } from "./todo-nav";
+import { getProjectIndex } from "./project-nav";
 import { renderTodos } from "../components/TodoSection";
+import { allProjects } from "../objects/project-object";
 
 export function editTodo(todoName, projectName) {
 	console.log("editTodo() invoked");
@@ -11,9 +12,11 @@ export function editTodo(todoName, projectName) {
 	let descInput = document.getElementById("desc").value;
 	let priorityInput = document.querySelector('input[type="radio"]:checked').value;
 
-	let project = getProject(projectName);
-	console.log(project);
-	let todo = getTodo(project, todoName);
+	let projectIndex = getProjectIndex(projectName);
+
+	let todoIndex = getTodoIndex(projectIndex, todoName);
+
+	let todo = allProjects[projectIndex].todos[todoIndex];
 
 	todo.name = todoTitle;
 	todo.due = dateInput;
@@ -21,5 +24,6 @@ export function editTodo(todoName, projectName) {
 	todo.priority = priorityInput;
 
 	form.remove();
+	localStorage.setItem("allProjects", JSON.stringify(allProjects));
 	renderTodos();
 }

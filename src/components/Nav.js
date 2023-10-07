@@ -1,6 +1,6 @@
 import { projectForm } from "./projectForm";
 import { allProjects } from "../objects/project-object";
-import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
+import { setCurrentProject } from "../logic/project-nav";
 import deleteImg from "../assets/imgs/delete-project-icon.png";
 import editImg from "../assets/imgs/edit-project-icon.png";
 import addProjectImg from "../assets/imgs/add-project-icon.png";

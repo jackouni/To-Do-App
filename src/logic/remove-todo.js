@@ -1,6 +1,5 @@
 import { allProjects } from "../objects/project-object";
 import { getProject, getProjectIndex } from "./project-nav";
-import { removeTodoElement } from "../components/TodoSection";
 
 export function removeTodo(event) {
 	console.log(`removeTodo("${event.target.todoElement}") invoked`);
@@ -10,12 +9,16 @@ export function removeTodo(event) {
 
 	// 'projectElement' property of target is the 'name' property of the project the associated todo is in.
 	let project = getProject(event.target.projectElement);
+	let projectName = project.name;
+	let projectIndex = getProjectIndex(projectName);
 
-	let projectTodos = project.todos;
+	let projectTodos = allProjects[projectIndex].todos;
 	let todoIndex = projectTodos.findIndex((todo) => todo.name === todoName);
 
 	// Remove todo from project (remove todo from project's 'todos' array property).
 	projectTodos.splice(todoIndex, 1);
+
+	localStorage.setItem("allProjects", JSON.stringify(allProjects));
 
 	// Debugging console.log message.
 	console.log(

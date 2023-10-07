@@ -1,11 +1,12 @@
 import { todoForm } from "./TodoForm";
-import { getCurrentProject, setCurrentProject } from "../logic/project-nav";
+import { getCurrentProject } from "../logic/project-nav";
 import { allProjects } from "../objects/project-object";
 import { removeTodo } from "../logic/remove-todo";
 import addTodoImg from "../assets/imgs/add-task-icon.png";
 import editTodoImg from "../assets/imgs/edit-todo-icon.png";
 import { toggleDropDown } from "../logic/todo-dropdown";
 import { todoEditForm } from "./TodoEditForm";
+import { formatDate } from "../objects/todo-object";
 
 export function todoSection() {
 	const todoMain = document.createElement("div");
@@ -92,7 +93,7 @@ export function renderTodos() {
 
 		let todoDate = document.createElement("p");
 		todoDate.classList.add("todo-date");
-		todoDate.innerText = todo.formatDate();
+		todoDate.innerText = formatDate(todo.due);
 		todoDate.todoElement = todo.name;
 
 		const editTodoContainer = document.createElement("div");
@@ -176,7 +177,7 @@ export function renderAllTodos() {
 
 			let todoDate = document.createElement("p");
 			todoDate.classList.add("todo-date");
-			todoDate.innerText = todo.formatDate();
+			todoDate.innerText = formatDate(todo.due);
 
 			todoContainer.append(checkBox);
 			todoContainer.append(todoTitle);

@@ -8,6 +8,8 @@ export function removeProject(projectName) {
 
 	allProjects.splice(index, 1);
 
+	localStorage.setItem("allProjects", JSON.stringify(allProjects));
+
 	console.log(
 		`allProjects spliced at index, ${index}. \nUpdated allProjects array: ${allProjects} `
 	);

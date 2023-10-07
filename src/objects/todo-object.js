@@ -1,8 +1,10 @@
 import { parse, format } from "date-fns";
-import { getCurrentProject } from "../logic/project-nav";
+import { getProjectIndex, getCurrentProject } from "../logic/project-nav";
+import { allProjects } from "./project-object";
 
 export function todoFactory(name, due, desc, priority) {
 	let projectName = getCurrentProject().name;
+	let projectIndex = getProjectIndex(projectName);
 
 	let newTodo = {
 		name,
@@ -10,29 +12,20 @@ export function todoFactory(name, due, desc, priority) {
 		desc,
 		projectName,
 		priority,
-		formatDate: function () {
-			if (this.due) {
-				let parsedDate = parse(this.due, "yyyy-MM-dd", new Date());
-				let formattedDate = format(parsedDate, "MMM do, yyyy");
-				return `${formattedDate}`;
-			} else {
-				return " ";
-			}
-		},
 	};
 
 	// Console.log Debugging for todo Creation
 	console.log(
-		`Todo created... "${
-			newTodo.name
-		}" \nnewTodo due date === ${newTodo.formatDate()}\nnewTodo description === "${
-			newTodo.desc
-		}"\nnewTodo.projectName === "${newTodo.projectName}"\n newTodo.priority === ${
-			newTodo.priority
-		}`
+		`Todo created... "${newTodo.name}" \nnewTodo due date === ${formatDate(
+			newTodo.due
+		)}\nnewTodo description === "${newTodo.desc}"\nnewTodo.projectName === "${
+			newTodo.projectName
+		}"\n newTodo.priority === ${newTodo.priority}`
 	);
 
-	getCurrentProject().todos.push(newTodo);
+	allProjects[projectIndex].todos.push(newTodo);
+
+	localStorage.setItem("allProjects", JSON.stringify(allProjects));
 
 	// Console.log Debugging for pushing todos to respective project's 'todos' array.
 	console.log(
@@ -42,4 +35,14 @@ export function todoFactory(name, due, desc, priority) {
 			getCurrentProject().todos
 		)}`
 	);
+}
+
+export function formatDate(dueDate) {
+	if (dueDate) {
+		let parsedDate = parse(dueDate, "yyyy-MM-dd", new Date());
+		let formattedDate = format(parsedDate, "MMM do, yyyy");
+		return `${formattedDate}`;
+	} else {
+		return " ";
+	}
 }
