@@ -1,5 +1,8 @@
 import { editTodo } from "../logic/edit-todo";
 import { isDuplicatedTodoName, isProjectFormActive } from "../logic/form-validation";
+import { getTodoIndex } from "../logic/todo-nav";
+import { getProjectIndex } from "../logic/project-nav";
+import { allProjects } from "../objects/project-object";
 
 function formTitle(todoName) {
 	let newTitle = document.createElement("h2");
@@ -165,9 +168,6 @@ function btnsContainer() {
 export function todoEditForm(event) {
 	isProjectFormActive();
 
-	let todoName = event.target.todoElement;
-	let projectName = event.target.projectElement;
-
 	let form = document.createElement("form");
 	form.id = "todoForm";
 
@@ -177,6 +177,9 @@ export function todoEditForm(event) {
 	form.append(descFieldset());
 	form.append(radioFieldset());
 	form.append(btnsContainer());
+
+	let todoName = event.target.todoElement;
+	let projectName = event.target.projectElement;
 
 	form.addEventListener("submit", function () {
 		console.log("Submit Event Triggered");
