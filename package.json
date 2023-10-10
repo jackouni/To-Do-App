@@ -1,13 +1,16 @@
 {
+	"homepage": "https://jackouni.github.io/To-Do-App",
 	"name": "todo-app",
 	"version": "1.0.0",
 	"description": "",
 	"private": true,
 	"scripts": {
+		"start": "webpack serve --open",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "webpack",
-		"watch": "webpack --watch",
-		"start": "webpack serve --open"
+		"watch": "webpack --watch"
 	},
 	"repository": {
 		"type": "git",
@@ -19,9 +22,9 @@
 	"bugs": {
 		"url": "https://github.com/jackouni/To-Do-App/issues"
 	},
-	"homepage": "https://github.com/jackouni/To-Do-App#readme",
 	"devDependencies": {
 		"css-loader": "^6.8.1",
+		"gh-pages": "^6.0.0",
 		"html-webpack-plugin": "^5.5.3",
 		"sass": "^1.66.1",
 		"sass-loader": "^13.3.2",
